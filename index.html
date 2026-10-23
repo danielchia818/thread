@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)file:///C:/Users/USER/Downloads/gemini-code-1792758162410.html -->
+<html lang="zh-TW"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>ASME B1.1 英制統一螺紋全規格標準精準查詢系統 (企業離線 &amp; iPhone PDF 直出版)</title>
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --primary-light: #2563eb;
+    --bg: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border: #cbd5e1;
+    --ext-color: #0284c7;
+    --int-color: #d97706;
+    --highlight: #e0f2fe;
+    --success: #059669;
+    --success-hover: #047857;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", "PingFang TC", Roboto, Arial, sans-serif; -webkit-tap-highlight-color: transparent; }
+  body { background-color: var(--bg); color: var(--text-main); padding: 16px 12px 40px; line-height: 1.5; }
+  .container { max-width: 1280px; margin: 0 auto; }
+
+  header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; background: #fff; padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border); box-shadow: 0 2px 4px rgba(0,0,0,0.03); }
+  .header-title h1 { font-size: 1.45rem; color: var(--primary); margin-bottom: 2px; }
+  .header-title p { color: var(--text-muted); font-size: 0.85rem; }
+
+  .action-bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .btn-pdf { background-color: var(--success); color: #ffffff; border: none; padding: 10px 16px; border-radius: 8px; font-size: 0.9rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 6px rgba(5, 150, 105, 0.3); transition: all 0.2s; }
+  .btn-pdf:hover { background-color: var(--success-hover); transform: translateY(-1px); }
+  .btn-pdf:active { transform: translateY(0); }
+  .btn-pdf:disabled { opacity: 0.6; cursor: wait; }
+
+  .layout { display: grid; grid-template-columns: 380px 1fr; gap: 18px; }
+  @media (max-width: 980px) {
+    .layout { grid-template-columns: 1fr; }
+    header { flex-direction: column; align-items: stretch; text-align: center; }
+    .action-bar { justify-content: center; }
+  }
+
+  .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 16px; box-shadow: 0 2px 4px rgba(0,0,0,0.04); }
+  .card-header { font-size: 1.02rem; font-weight: 700; color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+  .form-group { margin-bottom: 12px; }
+  label { display: block; font-size: 0.84rem; font-weight: 600; margin-bottom: 4px; color: var(--text-main); }
+  select, input[type="text"], input[type="number"] { width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.92rem; background: #fff; color: var(--text-main); outline: none; }
+  select:focus, input:focus { border-color: var(--primary-light); box-shadow: 0 0 0 3px var(--highlight); }
+
+  .radio-group { display: flex; gap: 8px; }
+  .radio-btn { flex: 1; text-align: center; border: 1px solid var(--border); padding: 9px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 700; user-select: none; transition: 0.15s; }
+  .radio-btn.active.ext { background: var(--ext-color); color: #fff; border-color: var(--ext-color); }
+  .radio-btn.active.int { background: var(--int-color); color: #fff; border-color: var(--int-color); }
+
+  .filter-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+  .chip { font-size: 0.76rem; padding: 5px 9px; border-radius: 5px; background: #e2e8f0; cursor: pointer; font-weight: 600; color: #334155; user-select: none; }
+  .chip.active { background: var(--primary); color: #fff; }
+
+  .custom-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; background: #f8fafc; padding: 10px; border-radius: 6px; border: 1px dashed var(--border); margin-top: 8px; }
+
+  .data-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .data-item { background: #f8fafc; padding: 10px; border-radius: 6px; border-left: 3px solid var(--primary-light); }
+  .data-item.accent { border-left-color: var(--success); }
+  .data-label { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+  .data-val { font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-top: 2px; font-family: Consolas, Monaco, monospace; }
+
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; margin-top: 6px; font-size: 0.88rem; min-width: 480px; }
+  th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: center; }
+  th { background-color: #f8fafc; font-weight: 700; color: #334155; }
+  td.mono { font-family: Consolas, Monaco, monospace; font-weight: 700; font-size: 0.92rem; }
+  tr.row-major { background-color: #eff6ff; }
+  tr.row-pitch { background-color: #ecfdf5; font-weight: 700; }
+  tr.row-minor { background-color: #fffbeb; font-weight: 700; }
+
+  .diagram-box { position: relative; width: 100%; background: #ffffff; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  svg { width: 100%; height: auto; display: block; }
+
+  .badge { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 0.82rem; font-weight: 700; }
+  .badge-ext { background: #e0f2fe; color: var(--ext-color); }
+  .badge-int { background: #fef3c7; color: var(--int-color); }
+
+  .tap-box { background: #ecfdf5; border: 1px solid #a7f3d0; padding: 10px 12px; border-radius: 6px; margin-top: 12px; font-size: 0.86rem; color: #065f46; }
+
+  /* 狀態提示橫幅 */
+  #toastMsg { display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #0f172a; color: #fff; padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 600; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="header-title">
+      <h1>ASME B1.1 英制統一螺紋全規格標準精準查詢系統</h1>
+      <p>完整收錄 #0 ~ 6" 全系列標準規格（UNC / UNF / UNEF / UN）與自訂 UNS 推算引擎 | 企業離線單檔版</p>
+    </div>
+    <div class="action-bar">
+      <button type="button" class="btn-pdf" id="btnExportPdf" onclick="exportNativePDF()">
+        <span>📲 iPhone / 離線直出 PDF</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- 左側控制面板 -->
+    <div>
+      <div class="card">
+        <div class="card-header">
+          <span>⚙️ 規格條件設定</span>
+          <label style="font-size:0.84rem; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:5px; color:var(--primary); margin:0;">
+            <input type="checkbox" id="unitMm" onchange="renderData()" style="width:16px; height:16px;"> 切換公制 (mm)
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label>螺紋型態 (Thread Type)</label>
+          <div class="radio-group">
+            <div class="radio-btn active ext" id="btnExt" onclick="setType('ext')">外牙 (External)</div>
+            <div class="radio-btn " id="btnInt" onclick="setType('int')">內牙 (Internal)</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>系列快速篩選</label>
+          <div class="filter-chips" id="seriesFilters">
+            <div class="chip active" onclick="setSeriesFilter('ALL', this)">全部</div>
+            <div class="chip" onclick="setSeriesFilter('UNC', this)">UNC 粗牙</div>
+            <div class="chip" onclick="setSeriesFilter('UNF', this)">UNF 細牙</div>
+            <div class="chip" onclick="setSeriesFilter('UNEF', this)">UNEF 超細牙</div>
+            <div class="chip" onclick="setSeriesFilter('8-UN', this)">8-UN</div>
+            <div class="chip" onclick="setSeriesFilter('12-UN', this)">12-UN</div>
+            <div class="chip" onclick="setSeriesFilter('16-UN', this)">16-UN</div>
+            <div class="chip" onclick="setSeriesFilter('CUSTOM', this)">⚡ 自訂 UNS</div>
+          </div>
+        </div>
+
+        <div class="form-group" id="presetSelectGroup">
+          <label for="threadSearch">快速搜尋 / 選擇規格 (<span id="countDisplay">186</span> 種)</label>
+          <input type="text" id="threadSearch" placeholder="輸入如 1/4, 1/2, #10, 20, 1-1/8..." oninput="filterDropdown()" style="margin-bottom:6px;">
+          <select id="threadSpec" size="7" onchange="onSpecChange()"><option value="{&quot;name&quot;:&quot;#0-80 UNF&quot;,&quot;d&quot;:0.06,&quot;tpi&quot;:80,&quot;series&quot;:&quot;UNF&quot;}">#0-80 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;#1-64 UNC&quot;,&quot;d&quot;:0.073,&quot;tpi&quot;:64,&quot;series&quot;:&quot;UNC&quot;}">#1-64 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;#1-72 UNF&quot;,&quot;d&quot;:0.073,&quot;tpi&quot;:72,&quot;series&quot;:&quot;UNF&quot;}">#1-72 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;#2-56 UNC&quot;,&quot;d&quot;:0.086,&quot;tpi&quot;:56,&quot;series&quot;:&quot;UNC&quot;}">#2-56 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;#2-64 UNF&quot;,&quot;d&quot;:0.086,&quot;tpi&quot;:64,&quot;series&quot;:&quot;UNF&quot;}">#2-64 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;#3-48 UNC&quot;,&quot;d&quot;:0.099,&quot;tpi&quot;:48,&quot;series&quot;:&quot;UNC&quot;}">#3-48 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;#3-56 UNF&quot;,&quot;d&quot;:0.099,&quot;tpi&quot;:56,&quot;series&quot;:&quot;UNF&quot;}">#3-56 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;#4-40 UNC&quot;,&quot;d&quot;:0.112,&quot;tpi&quot;:40,&quot;series&quot;:&quot;UNC&quot;}">#4-40 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;#4-48 UNF&quot;,&quot;d&quot;:0.112,&quot;tpi&quot;:48,&quot;series&quot;:&quot;UNF&quot;}">#4-48 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;#5-40 UNC&quot;,&quot;d&quot;:0.125,&quot;tpi&quot;:40,&quot;series&quot;:&quot;UNC&quot;}">#5-40 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;#5-44 UNF&quot;,&quot;d&quot;:0.125,&quot;tpi&quot;:44,&quot;series&quot;:&quot;UNF&quot;}">#5-44 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;#6-32 UNC&quot;,&quot;d&quot;:0.138,&quot;tpi&quot;:32,&quot;series&quot;:&quot;UNC&quot;}">#6-32 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;#6-40 UNF&quot;,&quot;d&quot;:0.138,&quot;tpi&quot;:40,&quot;series&quot;:&quot;UNF&quot;}">#6-40 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;#8-32 UNC&quot;,&quot;d&quot;:0.164,&quot;tpi&quot;:32,&quot;series&quot;:&quot;UNC&quot;}">#8-32 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;#8-36 UNF&quot;,&quot;d&quot;:0.164,&quot;tpi&quot;:36,&quot;series&quot;:&quot;UNF&quot;}">#8-36 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;#10-24 UNC&quot;,&quot;d&quot;:0.19,&quot;tpi&quot;:24,&quot;series&quot;:&quot;UNC&quot;}">#10-24 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;#10-32 UNF&quot;,&quot;d&quot;:0.19,&quot;tpi&quot;:32,&quot;series&quot;:&quot;UNF&quot;}">#10-32 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;#12-24 UNC&quot;,&quot;d&quot;:0.216,&quot;tpi&quot;:24,&quot;series&quot;:&quot;UNC&quot;}">#12-24 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;#12-28 UNF&quot;,&quot;d&quot;:0.216,&quot;tpi&quot;:28,&quot;series&quot;:&quot;UNF&quot;}">#12-28 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;#12-32 UNEF&quot;,&quot;d&quot;:0.216,&quot;tpi&quot;:32,&quot;series&quot;:&quot;UNEF&quot;}">#12-32 UNEF (UNEF)</option><option value="{&quot;name&quot;:&quot;1/4-20 UNC&quot;,&quot;d&quot;:0.25,&quot;tpi&quot;:20,&quot;series&quot;:&quot;UNC&quot;}">1/4-20 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;1/4-28 UNF&quot;,&quot;d&quot;:0.25,&quot;tpi&quot;:28,&quot;series&quot;:&quot;UNF&quot;}">1/4-28 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;1/4-32 UNEF&quot;,&quot;d&quot;:0.25,&quot;tpi&quot;:32,&quot;series&quot;:&quot;UNEF&quot;}">1/4-32 UNEF (UNEF)</option><option value="{&quot;name&quot;:&quot;5/16-18 UNC&quot;,&quot;d&quot;:0.3125,&quot;tpi&quot;:18,&quot;series&quot;:&quot;UNC&quot;}">5/16-18 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;5/16-20 UN&quot;,&quot;d&quot;:0.3125,&quot;tpi&quot;:20,&quot;series&quot;:&quot;20-UN&quot;}">5/16-20 UN (20-UN)</option><option value="{&quot;name&quot;:&quot;5/16-24 UNF&quot;,&quot;d&quot;:0.3125,&quot;tpi&quot;:24,&quot;series&quot;:&quot;UNF&quot;}">5/16-24 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;5/16-28 UN&quot;,&quot;d&quot;:0.3125,&quot;tpi&quot;:28,&quot;series&quot;:&quot;28-UN&quot;}">5/16-28 UN (28-UN)</option><option value="{&quot;name&quot;:&quot;5/16-32 UNEF&quot;,&quot;d&quot;:0.3125,&quot;tpi&quot;:32,&quot;series&quot;:&quot;UNEF&quot;}">5/16-32 UNEF (UNEF)</option><option value="{&quot;name&quot;:&quot;3/8-16 UNC&quot;,&quot;d&quot;:0.375,&quot;tpi&quot;:16,&quot;series&quot;:&quot;UNC&quot;}">3/8-16 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;3/8-20 UN&quot;,&quot;d&quot;:0.375,&quot;tpi&quot;:20,&quot;series&quot;:&quot;20-UN&quot;}">3/8-20 UN (20-UN)</option><option value="{&quot;name&quot;:&quot;3/8-24 UNF&quot;,&quot;d&quot;:0.375,&quot;tpi&quot;:24,&quot;series&quot;:&quot;UNF&quot;}">3/8-24 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;3/8-28 UN&quot;,&quot;d&quot;:0.375,&quot;tpi&quot;:28,&quot;series&quot;:&quot;28-UN&quot;}">3/8-28 UN (28-UN)</option><option value="{&quot;name&quot;:&quot;3/8-32 UNEF&quot;,&quot;d&quot;:0.375,&quot;tpi&quot;:32,&quot;series&quot;:&quot;UNEF&quot;}">3/8-32 UNEF (UNEF)</option><option value="{&quot;name&quot;:&quot;7/16-14 UNC&quot;,&quot;d&quot;:0.4375,&quot;tpi&quot;:14,&quot;series&quot;:&quot;UNC&quot;}">7/16-14 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;7/16-16 UN&quot;,&quot;d&quot;:0.4375,&quot;tpi&quot;:16,&quot;series&quot;:&quot;16-UN&quot;}">7/16-16 UN (16-UN)</option><option value="{&quot;name&quot;:&quot;7/16-20 UNF&quot;,&quot;d&quot;:0.4375,&quot;tpi&quot;:20,&quot;series&quot;:&quot;UNF&quot;}">7/16-20 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;7/16-28 UNEF&quot;,&quot;d&quot;:0.4375,&quot;tpi&quot;:28,&quot;series&quot;:&quot;UNEF&quot;}">7/16-28 UNEF (UNEF)</option><option value="{&quot;name&quot;:&quot;7/16-32 UN&quot;,&quot;d&quot;:0.4375,&quot;tpi&quot;:32,&quot;series&quot;:&quot;32-UN&quot;}">7/16-32 UN (32-UN)</option><option value="{&quot;name&quot;:&quot;1/2-13 UNC&quot;,&quot;d&quot;:0.5,&quot;tpi&quot;:13,&quot;series&quot;:&quot;UNC&quot;}">1/2-13 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;1/2-16 UN&quot;,&quot;d&quot;:0.5,&quot;tpi&quot;:16,&quot;series&quot;:&quot;16-UN&quot;}">1/2-16 UN (16-UN)</option><option value="{&quot;name&quot;:&quot;1/2-20 UNF&quot;,&quot;d&quot;:0.5,&quot;tpi&quot;:20,&quot;series&quot;:&quot;UNF&quot;}">1/2-20 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;1/2-28 UNEF&quot;,&quot;d&quot;:0.5,&quot;tpi&quot;:28,&quot;series&quot;:&quot;UNEF&quot;}">1/2-28 UNEF (UNEF)</option><option value="{&quot;name&quot;:&quot;1/2-32 UN&quot;,&quot;d&quot;:0.5,&quot;tpi&quot;:32,&quot;series&quot;:&quot;32-UN&quot;}">1/2-32 UN (32-UN)</option><option value="{&quot;name&quot;:&quot;9/16-12 UNC&quot;,&quot;d&quot;:0.5625,&quot;tpi&quot;:12,&quot;series&quot;:&quot;UNC&quot;}">9/16-12 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;9/16-16 UN&quot;,&quot;d&quot;:0.5625,&quot;tpi&quot;:16,&quot;series&quot;:&quot;16-UN&quot;}">9/16-16 UN (16-UN)</option><option value="{&quot;name&quot;:&quot;9/16-18 UNF&quot;,&quot;d&quot;:0.5625,&quot;tpi&quot;:18,&quot;series&quot;:&quot;UNF&quot;}">9/16-18 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;9/16-20 UN&quot;,&quot;d&quot;:0.5625,&quot;tpi&quot;:20,&quot;series&quot;:&quot;20-UN&quot;}">9/16-20 UN (20-UN)</option><option value="{&quot;name&quot;:&quot;9/16-24 UNEF&quot;,&quot;d&quot;:0.5625,&quot;tpi&quot;:24,&quot;series&quot;:&quot;UNEF&quot;}">9/16-24 UNEF (UNEF)</option><option value="{&quot;name&quot;:&quot;9/16-28 UN&quot;,&quot;d&quot;:0.5625,&quot;tpi&quot;:28,&quot;series&quot;:&quot;28-UN&quot;}">9/16-28 UN (28-UN)</option><option value="{&quot;name&quot;:&quot;9/16-32 UN&quot;,&quot;d&quot;:0.5625,&quot;tpi&quot;:32,&quot;series&quot;:&quot;32-UN&quot;}">9/16-32 UN (32-UN)</option><option value="{&quot;name&quot;:&quot;5/8-11 UNC&quot;,&quot;d&quot;:0.625,&quot;tpi&quot;:11,&quot;series&quot;:&quot;UNC&quot;}">5/8-11 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;5/8-12 UN&quot;,&quot;d&quot;:0.625,&quot;tpi&quot;:12,&quot;series&quot;:&quot;12-UN&quot;}">5/8-12 UN (12-UN)</option><option value="{&quot;name&quot;:&quot;5/8-16 UN&quot;,&quot;d&quot;:0.625,&quot;tpi&quot;:16,&quot;series&quot;:&quot;16-UN&quot;}">5/8-16 UN (16-UN)</option><option value="{&quot;name&quot;:&quot;5/8-18 UNF&quot;,&quot;d&quot;:0.625,&quot;tpi&quot;:18,&quot;series&quot;:&quot;UNF&quot;}">5/8-18 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;5/8-20 UN&quot;,&quot;d&quot;:0.625,&quot;tpi&quot;:20,&quot;series&quot;:&quot;20-UN&quot;}">5/8-20 UN (20-UN)</option><option value="{&quot;name&quot;:&quot;5/8-24 UNEF&quot;,&quot;d&quot;:0.625,&quot;tpi&quot;:24,&quot;series&quot;:&quot;UNEF&quot;}">5/8-24 UNEF (UNEF)</option><option value="{&quot;name&quot;:&quot;5/8-28 UN&quot;,&quot;d&quot;:0.625,&quot;tpi&quot;:28,&quot;series&quot;:&quot;28-UN&quot;}">5/8-28 UN (28-UN)</option><option value="{&quot;name&quot;:&quot;5/8-32 UN&quot;,&quot;d&quot;:0.625,&quot;tpi&quot;:32,&quot;series&quot;:&quot;32-UN&quot;}">5/8-32 UN (32-UN)</option><option value="{&quot;name&quot;:&quot;11/16-12 UN&quot;,&quot;d&quot;:0.6875,&quot;tpi&quot;:12,&quot;series&quot;:&quot;12-UN&quot;}">11/16-12 UN (12-UN)</option><option value="{&quot;name&quot;:&quot;11/16-16 UN&quot;,&quot;d&quot;:0.6875,&quot;tpi&quot;:16,&quot;series&quot;:&quot;16-UN&quot;}">11/16-16 UN (16-UN)</option><option value="{&quot;name&quot;:&quot;11/16-20 UN&quot;,&quot;d&quot;:0.6875,&quot;tpi&quot;:20,&quot;series&quot;:&quot;20-UN&quot;}">11/16-20 UN (20-UN)</option><option value="{&quot;name&quot;:&quot;11/16-24 UNEF&quot;,&quot;d&quot;:0.6875,&quot;tpi&quot;:24,&quot;series&quot;:&quot;UNEF&quot;}">11/16-24 UNEF (UNEF)</option><option value="{&quot;name&quot;:&quot;11/16-28 UN&quot;,&quot;d&quot;:0.6875,&quot;tpi&quot;:28,&quot;series&quot;:&quot;28-UN&quot;}">11/16-28 UN (28-UN)</option><option value="{&quot;name&quot;:&quot;11/16-32 UN&quot;,&quot;d&quot;:0.6875,&quot;tpi&quot;:32,&quot;series&quot;:&quot;32-UN&quot;}">11/16-32 UN (32-UN)</option><option value="{&quot;name&quot;:&quot;3/4-10 UNC&quot;,&quot;d&quot;:0.75,&quot;tpi&quot;:10,&quot;series&quot;:&quot;UNC&quot;}">3/4-10 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;3/4-12 UN&quot;,&quot;d&quot;:0.75,&quot;tpi&quot;:12,&quot;series&quot;:&quot;12-UN&quot;}">3/4-12 UN (12-UN)</option><option value="{&quot;name&quot;:&quot;3/4-16 UNF&quot;,&quot;d&quot;:0.75,&quot;tpi&quot;:16,&quot;series&quot;:&quot;UNF&quot;}">3/4-16 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;3/4-20 UNEF&quot;,&quot;d&quot;:0.75,&quot;tpi&quot;:20,&quot;series&quot;:&quot;UNEF&quot;}">3/4-20 UNEF (UNEF)</option><option value="{&quot;name&quot;:&quot;3/4-28 UN&quot;,&quot;d&quot;:0.75,&quot;tpi&quot;:28,&quot;series&quot;:&quot;28-UN&quot;}">3/4-28 UN (28-UN)</option><option value="{&quot;name&quot;:&quot;3/4-32 UN&quot;,&quot;d&quot;:0.75,&quot;tpi&quot;:32,&quot;series&quot;:&quot;32-UN&quot;}">3/4-32 UN (32-UN)</option><option value="{&quot;name&quot;:&quot;13/16-12 UN&quot;,&quot;d&quot;:0.8125,&quot;tpi&quot;:12,&quot;series&quot;:&quot;12-UN&quot;}">13/16-12 UN (12-UN)</option><option value="{&quot;name&quot;:&quot;13/16-16 UN&quot;,&quot;d&quot;:0.8125,&quot;tpi&quot;:16,&quot;series&quot;:&quot;16-UN&quot;}">13/16-16 UN (16-UN)</option><option value="{&quot;name&quot;:&quot;13/16-20 UNEF&quot;,&quot;d&quot;:0.8125,&quot;tpi&quot;:20,&quot;series&quot;:&quot;UNEF&quot;}">13/16-20 UNEF (UNEF)</option><option value="{&quot;name&quot;:&quot;13/16-28 UN&quot;,&quot;d&quot;:0.8125,&quot;tpi&quot;:28,&quot;series&quot;:&quot;28-UN&quot;}">13/16-28 UN (28-UN)</option><option value="{&quot;name&quot;:&quot;13/16-32 UN&quot;,&quot;d&quot;:0.8125,&quot;tpi&quot;:32,&quot;series&quot;:&quot;32-UN&quot;}">13/16-32 UN (32-UN)</option><option value="{&quot;name&quot;:&quot;7/8-9 UNC&quot;,&quot;d&quot;:0.875,&quot;tpi&quot;:9,&quot;series&quot;:&quot;UNC&quot;}">7/8-9 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;7/8-12 UN&quot;,&quot;d&quot;:0.875,&quot;tpi&quot;:12,&quot;series&quot;:&quot;12-UN&quot;}">7/8-12 UN (12-UN)</option><option value="{&quot;name&quot;:&quot;7/8-14 UNF&quot;,&quot;d&quot;:0.875,&quot;tpi&quot;:14,&quot;series&quot;:&quot;UNF&quot;}">7/8-14 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;7/8-16 UN&quot;,&quot;d&quot;:0.875,&quot;tpi&quot;:16,&quot;series&quot;:&quot;16-UN&quot;}">7/8-16 UN (16-UN)</option><option value="{&quot;name&quot;:&quot;7/8-20 UNEF&quot;,&quot;d&quot;:0.875,&quot;tpi&quot;:20,&quot;series&quot;:&quot;UNEF&quot;}">7/8-20 UNEF (UNEF)</option><option value="{&quot;name&quot;:&quot;7/8-28 UN&quot;,&quot;d&quot;:0.875,&quot;tpi&quot;:28,&quot;series&quot;:&quot;28-UN&quot;}">7/8-28 UN (28-UN)</option><option value="{&quot;name&quot;:&quot;7/8-32 UN&quot;,&quot;d&quot;:0.875,&quot;tpi&quot;:32,&quot;series&quot;:&quot;32-UN&quot;}">7/8-32 UN (32-UN)</option><option value="{&quot;name&quot;:&quot;15/16-12 UN&quot;,&quot;d&quot;:0.9375,&quot;tpi&quot;:12,&quot;series&quot;:&quot;12-UN&quot;}">15/16-12 UN (12-UN)</option><option value="{&quot;name&quot;:&quot;15/16-16 UN&quot;,&quot;d&quot;:0.9375,&quot;tpi&quot;:16,&quot;series&quot;:&quot;16-UN&quot;}">15/16-16 UN (16-UN)</option><option value="{&quot;name&quot;:&quot;15/16-20 UNEF&quot;,&quot;d&quot;:0.9375,&quot;tpi&quot;:20,&quot;series&quot;:&quot;UNEF&quot;}">15/16-20 UNEF (UNEF)</option><option value="{&quot;name&quot;:&quot;15/16-28 UN&quot;,&quot;d&quot;:0.9375,&quot;tpi&quot;:28,&quot;series&quot;:&quot;28-UN&quot;}">15/16-28 UN (28-UN)</option><option value="{&quot;name&quot;:&quot;15/16-32 UN&quot;,&quot;d&quot;:0.9375,&quot;tpi&quot;:32,&quot;series&quot;:&quot;32-UN&quot;}">15/16-32 UN (32-UN)</option><option value="{&quot;name&quot;:&quot;1-8 UNC&quot;,&quot;d&quot;:1,&quot;tpi&quot;:8,&quot;series&quot;:&quot;UNC&quot;}">1-8 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;1-12 UNF&quot;,&quot;d&quot;:1,&quot;tpi&quot;:12,&quot;series&quot;:&quot;UNF&quot;}">1-12 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;1-14 UNS&quot;,&quot;d&quot;:1,&quot;tpi&quot;:14,&quot;series&quot;:&quot;UN&quot;}">1-14 UNS (UN)</option><option value="{&quot;name&quot;:&quot;1-16 UN&quot;,&quot;d&quot;:1,&quot;tpi&quot;:16,&quot;series&quot;:&quot;16-UN&quot;}">1-16 UN (16-UN)</option><option value="{&quot;name&quot;:&quot;1-20 UNEF&quot;,&quot;d&quot;:1,&quot;tpi&quot;:20,&quot;series&quot;:&quot;UNEF&quot;}">1-20 UNEF (UNEF)</option><option value="{&quot;name&quot;:&quot;1-28 UN&quot;,&quot;d&quot;:1,&quot;tpi&quot;:28,&quot;series&quot;:&quot;28-UN&quot;}">1-28 UN (28-UN)</option><option value="{&quot;name&quot;:&quot;1-32 UN&quot;,&quot;d&quot;:1,&quot;tpi&quot;:32,&quot;series&quot;:&quot;32-UN&quot;}">1-32 UN (32-UN)</option><option value="{&quot;name&quot;:&quot;1 1/16-8 UN&quot;,&quot;d&quot;:1.0625,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">1 1/16-8 UN (8-UN)</option><option value="{&quot;name&quot;:&quot;1 1/16-12 UN&quot;,&quot;d&quot;:1.0625,&quot;tpi&quot;:12,&quot;series&quot;:&quot;12-UN&quot;}">1 1/16-12 UN (12-UN)</option><option value="{&quot;name&quot;:&quot;1 1/16-16 UN&quot;,&quot;d&quot;:1.0625,&quot;tpi&quot;:16,&quot;series&quot;:&quot;16-UN&quot;}">1 1/16-16 UN (16-UN)</option><option value="{&quot;name&quot;:&quot;1 1/16-18 UNEF&quot;,&quot;d&quot;:1.0625,&quot;tpi&quot;:18,&quot;series&quot;:&quot;UNEF&quot;}">1 1/16-18 UNEF (UNEF)</option><option value="{&quot;name&quot;:&quot;1 1/8-7 UNC&quot;,&quot;d&quot;:1.125,&quot;tpi&quot;:7,&quot;series&quot;:&quot;UNC&quot;}">1 1/8-7 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;1 1/8-8 UN&quot;,&quot;d&quot;:1.125,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">1 1/8-8 UN (8-UN)</option><option value="{&quot;name&quot;:&quot;1 1/8-12 UNF&quot;,&quot;d&quot;:1.125,&quot;tpi&quot;:12,&quot;series&quot;:&quot;UNF&quot;}">1 1/8-12 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;1 1/8-16 UN&quot;,&quot;d&quot;:1.125,&quot;tpi&quot;:16,&quot;series&quot;:&quot;16-UN&quot;}">1 1/8-16 UN (16-UN)</option><option value="{&quot;name&quot;:&quot;1 1/8-18 UNEF&quot;,&quot;d&quot;:1.125,&quot;tpi&quot;:18,&quot;series&quot;:&quot;UNEF&quot;}">1 1/8-18 UNEF (UNEF)</option><option value="{&quot;name&quot;:&quot;1 3/16-8 UN&quot;,&quot;d&quot;:1.1875,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">1 3/16-8 UN (8-UN)</option><option value="{&quot;name&quot;:&quot;1 3/16-12 UN&quot;,&quot;d&quot;:1.1875,&quot;tpi&quot;:12,&quot;series&quot;:&quot;12-UN&quot;}">1 3/16-12 UN (12-UN)</option><option value="{&quot;name&quot;:&quot;1 3/16-16 UN&quot;,&quot;d&quot;:1.1875,&quot;tpi&quot;:16,&quot;series&quot;:&quot;16-UN&quot;}">1 3/16-16 UN (16-UN)</option><option value="{&quot;name&quot;:&quot;1 1/4-7 UNC&quot;,&quot;d&quot;:1.25,&quot;tpi&quot;:7,&quot;series&quot;:&quot;UNC&quot;}">1 1/4-7 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;1 1/4-8 UN&quot;,&quot;d&quot;:1.25,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">1 1/4-8 UN (8-UN)</option><option value="{&quot;name&quot;:&quot;1 1/4-12 UNF&quot;,&quot;d&quot;:1.25,&quot;tpi&quot;:12,&quot;series&quot;:&quot;UNF&quot;}">1 1/4-12 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;1 1/4-16 UN&quot;,&quot;d&quot;:1.25,&quot;tpi&quot;:16,&quot;series&quot;:&quot;16-UN&quot;}">1 1/4-16 UN (16-UN)</option><option value="{&quot;name&quot;:&quot;1 1/4-18 UNEF&quot;,&quot;d&quot;:1.25,&quot;tpi&quot;:18,&quot;series&quot;:&quot;UNEF&quot;}">1 1/4-18 UNEF (UNEF)</option><option value="{&quot;name&quot;:&quot;1 5/16-8 UN&quot;,&quot;d&quot;:1.3125,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">1 5/16-8 UN (8-UN)</option><option value="{&quot;name&quot;:&quot;1 5/16-12 UN&quot;,&quot;d&quot;:1.3125,&quot;tpi&quot;:12,&quot;series&quot;:&quot;12-UN&quot;}">1 5/16-12 UN (12-UN)</option><option value="{&quot;name&quot;:&quot;1 5/16-16 UN&quot;,&quot;d&quot;:1.3125,&quot;tpi&quot;:16,&quot;series&quot;:&quot;16-UN&quot;}">1 5/16-16 UN (16-UN)</option><option value="{&quot;name&quot;:&quot;1 3/8-6 UNC&quot;,&quot;d&quot;:1.375,&quot;tpi&quot;:6,&quot;series&quot;:&quot;UNC&quot;}">1 3/8-6 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;1 3/8-8 UN&quot;,&quot;d&quot;:1.375,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">1 3/8-8 UN (8-UN)</option><option value="{&quot;name&quot;:&quot;1 3/8-12 UNF&quot;,&quot;d&quot;:1.375,&quot;tpi&quot;:12,&quot;series&quot;:&quot;UNF&quot;}">1 3/8-12 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;1 3/8-16 UN&quot;,&quot;d&quot;:1.375,&quot;tpi&quot;:16,&quot;series&quot;:&quot;16-UN&quot;}">1 3/8-16 UN (16-UN)</option><option value="{&quot;name&quot;:&quot;1 3/8-18 UNEF&quot;,&quot;d&quot;:1.375,&quot;tpi&quot;:18,&quot;series&quot;:&quot;UNEF&quot;}">1 3/8-18 UNEF (UNEF)</option><option value="{&quot;name&quot;:&quot;1 7/16-6 UN&quot;,&quot;d&quot;:1.4375,&quot;tpi&quot;:6,&quot;series&quot;:&quot;6-UN&quot;}">1 7/16-6 UN (6-UN)</option><option value="{&quot;name&quot;:&quot;1 7/16-8 UN&quot;,&quot;d&quot;:1.4375,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">1 7/16-8 UN (8-UN)</option><option value="{&quot;name&quot;:&quot;1 7/16-12 UN&quot;,&quot;d&quot;:1.4375,&quot;tpi&quot;:12,&quot;series&quot;:&quot;12-UN&quot;}">1 7/16-12 UN (12-UN)</option><option value="{&quot;name&quot;:&quot;1 7/16-16 UN&quot;,&quot;d&quot;:1.4375,&quot;tpi&quot;:16,&quot;series&quot;:&quot;16-UN&quot;}">1 7/16-16 UN (16-UN)</option><option value="{&quot;name&quot;:&quot;1 1/2-6 UNC&quot;,&quot;d&quot;:1.5,&quot;tpi&quot;:6,&quot;series&quot;:&quot;UNC&quot;}">1 1/2-6 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;1 1/2-8 UN&quot;,&quot;d&quot;:1.5,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">1 1/2-8 UN (8-UN)</option><option value="{&quot;name&quot;:&quot;1 1/2-12 UNF&quot;,&quot;d&quot;:1.5,&quot;tpi&quot;:12,&quot;series&quot;:&quot;UNF&quot;}">1 1/2-12 UNF (UNF)</option><option value="{&quot;name&quot;:&quot;1 1/2-16 UN&quot;,&quot;d&quot;:1.5,&quot;tpi&quot;:16,&quot;series&quot;:&quot;16-UN&quot;}">1 1/2-16 UN (16-UN)</option><option value="{&quot;name&quot;:&quot;1 1/2-18 UNEF&quot;,&quot;d&quot;:1.5,&quot;tpi&quot;:18,&quot;series&quot;:&quot;UNEF&quot;}">1 1/2-18 UNEF (UNEF)</option><option value="{&quot;name&quot;:&quot;1 5/8-6 UN&quot;,&quot;d&quot;:1.625,&quot;tpi&quot;:6,&quot;series&quot;:&quot;6-UN&quot;}">1 5/8-6 UN (6-UN)</option><option value="{&quot;name&quot;:&quot;1 5/8-8 UN&quot;,&quot;d&quot;:1.625,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">1 5/8-8 UN (8-UN)</option><option value="{&quot;name&quot;:&quot;1 5/8-12 UN&quot;,&quot;d&quot;:1.625,&quot;tpi&quot;:12,&quot;series&quot;:&quot;12-UN&quot;}">1 5/8-12 UN (12-UN)</option><option value="{&quot;name&quot;:&quot;1 5/8-16 UN&quot;,&quot;d&quot;:1.625,&quot;tpi&quot;:16,&quot;series&quot;:&quot;16-UN&quot;}">1 5/8-16 UN (16-UN)</option><option value="{&quot;name&quot;:&quot;1 3/4-5 UNC&quot;,&quot;d&quot;:1.75,&quot;tpi&quot;:5,&quot;series&quot;:&quot;UNC&quot;}">1 3/4-5 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;1 3/4-6 UN&quot;,&quot;d&quot;:1.75,&quot;tpi&quot;:6,&quot;series&quot;:&quot;6-UN&quot;}">1 3/4-6 UN (6-UN)</option><option value="{&quot;name&quot;:&quot;1 3/4-8 UN&quot;,&quot;d&quot;:1.75,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">1 3/4-8 UN (8-UN)</option><option value="{&quot;name&quot;:&quot;1 3/4-12 UN&quot;,&quot;d&quot;:1.75,&quot;tpi&quot;:12,&quot;series&quot;:&quot;12-UN&quot;}">1 3/4-12 UN (12-UN)</option><option value="{&quot;name&quot;:&quot;1 3/4-16 UN&quot;,&quot;d&quot;:1.75,&quot;tpi&quot;:16,&quot;series&quot;:&quot;16-UN&quot;}">1 3/4-16 UN (16-UN)</option><option value="{&quot;name&quot;:&quot;1 7/8-6 UN&quot;,&quot;d&quot;:1.875,&quot;tpi&quot;:6,&quot;series&quot;:&quot;6-UN&quot;}">1 7/8-6 UN (6-UN)</option><option value="{&quot;name&quot;:&quot;1 7/8-8 UN&quot;,&quot;d&quot;:1.875,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">1 7/8-8 UN (8-UN)</option><option value="{&quot;name&quot;:&quot;1 7/8-12 UN&quot;,&quot;d&quot;:1.875,&quot;tpi&quot;:12,&quot;series&quot;:&quot;12-UN&quot;}">1 7/8-12 UN (12-UN)</option><option value="{&quot;name&quot;:&quot;1 7/8-16 UN&quot;,&quot;d&quot;:1.875,&quot;tpi&quot;:16,&quot;series&quot;:&quot;16-UN&quot;}">1 7/8-16 UN (16-UN)</option><option value="{&quot;name&quot;:&quot;2-4 1/2 UNC&quot;,&quot;d&quot;:2,&quot;tpi&quot;:4.5,&quot;series&quot;:&quot;UNC&quot;}">2-4 1/2 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;2-6 UN&quot;,&quot;d&quot;:2,&quot;tpi&quot;:6,&quot;series&quot;:&quot;6-UN&quot;}">2-6 UN (6-UN)</option><option value="{&quot;name&quot;:&quot;2-8 UN&quot;,&quot;d&quot;:2,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">2-8 UN (8-UN)</option><option value="{&quot;name&quot;:&quot;2-12 UN&quot;,&quot;d&quot;:2,&quot;tpi&quot;:12,&quot;series&quot;:&quot;12-UN&quot;}">2-12 UN (12-UN)</option><option value="{&quot;name&quot;:&quot;2-16 UN&quot;,&quot;d&quot;:2,&quot;tpi&quot;:16,&quot;series&quot;:&quot;16-UN&quot;}">2-16 UN (16-UN)</option><option value="{&quot;name&quot;:&quot;2 1/4-4 1/2 UNC&quot;,&quot;d&quot;:2.25,&quot;tpi&quot;:4.5,&quot;series&quot;:&quot;UNC&quot;}">2 1/4-4 1/2 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;2 1/4-6 UN&quot;,&quot;d&quot;:2.25,&quot;tpi&quot;:6,&quot;series&quot;:&quot;6-UN&quot;}">2 1/4-6 UN (6-UN)</option><option value="{&quot;name&quot;:&quot;2 1/4-8 UN&quot;,&quot;d&quot;:2.25,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">2 1/4-8 UN (8-UN)</option><option value="{&quot;name&quot;:&quot;2 1/4-12 UN&quot;,&quot;d&quot;:2.25,&quot;tpi&quot;:12,&quot;series&quot;:&quot;12-UN&quot;}">2 1/4-12 UN (12-UN)</option><option value="{&quot;name&quot;:&quot;2 1/2-4 UNC&quot;,&quot;d&quot;:2.5,&quot;tpi&quot;:4,&quot;series&quot;:&quot;UNC&quot;}">2 1/2-4 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;2 1/2-6 UN&quot;,&quot;d&quot;:2.5,&quot;tpi&quot;:6,&quot;series&quot;:&quot;6-UN&quot;}">2 1/2-6 UN (6-UN)</option><option value="{&quot;name&quot;:&quot;2 1/2-8 UN&quot;,&quot;d&quot;:2.5,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">2 1/2-8 UN (8-UN)</option><option value="{&quot;name&quot;:&quot;2 1/2-12 UN&quot;,&quot;d&quot;:2.5,&quot;tpi&quot;:12,&quot;series&quot;:&quot;12-UN&quot;}">2 1/2-12 UN (12-UN)</option><option value="{&quot;name&quot;:&quot;2 3/4-4 UNC&quot;,&quot;d&quot;:2.75,&quot;tpi&quot;:4,&quot;series&quot;:&quot;UNC&quot;}">2 3/4-4 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;2 3/4-6 UN&quot;,&quot;d&quot;:2.75,&quot;tpi&quot;:6,&quot;series&quot;:&quot;6-UN&quot;}">2 3/4-6 UN (6-UN)</option><option value="{&quot;name&quot;:&quot;2 3/4-8 UN&quot;,&quot;d&quot;:2.75,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">2 3/4-8 UN (8-UN)</option><option value="{&quot;name&quot;:&quot;2 3/4-12 UN&quot;,&quot;d&quot;:2.75,&quot;tpi&quot;:12,&quot;series&quot;:&quot;12-UN&quot;}">2 3/4-12 UN (12-UN)</option><option value="{&quot;name&quot;:&quot;3-4 UNC&quot;,&quot;d&quot;:3,&quot;tpi&quot;:4,&quot;series&quot;:&quot;UNC&quot;}">3-4 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;3-6 UN&quot;,&quot;d&quot;:3,&quot;tpi&quot;:6,&quot;series&quot;:&quot;6-UN&quot;}">3-6 UN (6-UN)</option><option value="{&quot;name&quot;:&quot;3-8 UN&quot;,&quot;d&quot;:3,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">3-8 UN (8-UN)</option><option value="{&quot;name&quot;:&quot;3-12 UN&quot;,&quot;d&quot;:3,&quot;tpi&quot;:12,&quot;series&quot;:&quot;12-UN&quot;}">3-12 UN (12-UN)</option><option value="{&quot;name&quot;:&quot;3 1/4-4 UNC&quot;,&quot;d&quot;:3.25,&quot;tpi&quot;:4,&quot;series&quot;:&quot;UNC&quot;}">3 1/4-4 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;3 1/4-6 UN&quot;,&quot;d&quot;:3.25,&quot;tpi&quot;:6,&quot;series&quot;:&quot;6-UN&quot;}">3 1/4-6 UN (6-UN)</option><option value="{&quot;name&quot;:&quot;3 1/4-8 UN&quot;,&quot;d&quot;:3.25,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">3 1/4-8 UN (8-UN)</option><option value="{&quot;name&quot;:&quot;3 1/2-4 UNC&quot;,&quot;d&quot;:3.5,&quot;tpi&quot;:4,&quot;series&quot;:&quot;UNC&quot;}">3 1/2-4 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;3 1/2-6 UN&quot;,&quot;d&quot;:3.5,&quot;tpi&quot;:6,&quot;series&quot;:&quot;6-UN&quot;}">3 1/2-6 UN (6-UN)</option><option value="{&quot;name&quot;:&quot;3 1/2-8 UN&quot;,&quot;d&quot;:3.5,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">3 1/2-8 UN (8-UN)</option><option value="{&quot;name&quot;:&quot;3 3/4-4 UNC&quot;,&quot;d&quot;:3.75,&quot;tpi&quot;:4,&quot;series&quot;:&quot;UNC&quot;}">3 3/4-4 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;3 3/4-6 UN&quot;,&quot;d&quot;:3.75,&quot;tpi&quot;:6,&quot;series&quot;:&quot;6-UN&quot;}">3 3/4-6 UN (6-UN)</option><option value="{&quot;name&quot;:&quot;3 3/4-8 UN&quot;,&quot;d&quot;:3.75,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">3 3/4-8 UN (8-UN)</option><option value="{&quot;name&quot;:&quot;4-4 UNC&quot;,&quot;d&quot;:4,&quot;tpi&quot;:4,&quot;series&quot;:&quot;UNC&quot;}">4-4 UNC (UNC)</option><option value="{&quot;name&quot;:&quot;4-6 UN&quot;,&quot;d&quot;:4,&quot;tpi&quot;:6,&quot;series&quot;:&quot;6-UN&quot;}">4-6 UN (6-UN)</option><option value="{&quot;name&quot;:&quot;4-8 UN&quot;,&quot;d&quot;:4,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">4-8 UN (8-UN)</option><option value="{&quot;name&quot;:&quot;4 1/2-4 UN&quot;,&quot;d&quot;:4.5,&quot;tpi&quot;:4,&quot;series&quot;:&quot;4-UN&quot;}">4 1/2-4 UN (4-UN)</option><option value="{&quot;name&quot;:&quot;4 1/2-6 UN&quot;,&quot;d&quot;:4.5,&quot;tpi&quot;:6,&quot;series&quot;:&quot;6-UN&quot;}">4 1/2-6 UN (6-UN)</option><option value="{&quot;name&quot;:&quot;4 1/2-8 UN&quot;,&quot;d&quot;:4.5,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">4 1/2-8 UN (8-UN)</option><option value="{&quot;name&quot;:&quot;5-4 UN&quot;,&quot;d&quot;:5,&quot;tpi&quot;:4,&quot;series&quot;:&quot;4-UN&quot;}">5-4 UN (4-UN)</option><option value="{&quot;name&quot;:&quot;5-6 UN&quot;,&quot;d&quot;:5,&quot;tpi&quot;:6,&quot;series&quot;:&quot;6-UN&quot;}">5-6 UN (6-UN)</option><option value="{&quot;name&quot;:&quot;5-8 UN&quot;,&quot;d&quot;:5,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">5-8 UN (8-UN)</option><option value="{&quot;name&quot;:&quot;5 1/2-4 UN&quot;,&quot;d&quot;:5.5,&quot;tpi&quot;:4,&quot;series&quot;:&quot;4-UN&quot;}">5 1/2-4 UN (4-UN)</option><option value="{&quot;name&quot;:&quot;5 1/2-6 UN&quot;,&quot;d&quot;:5.5,&quot;tpi&quot;:6,&quot;series&quot;:&quot;6-UN&quot;}">5 1/2-6 UN (6-UN)</option><option value="{&quot;name&quot;:&quot;5 1/2-8 UN&quot;,&quot;d&quot;:5.5,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">5 1/2-8 UN (8-UN)</option><option value="{&quot;name&quot;:&quot;6-4 UN&quot;,&quot;d&quot;:6,&quot;tpi&quot;:4,&quot;series&quot;:&quot;4-UN&quot;}">6-4 UN (4-UN)</option><option value="{&quot;name&quot;:&quot;6-6 UN&quot;,&quot;d&quot;:6,&quot;tpi&quot;:6,&quot;series&quot;:&quot;6-UN&quot;}">6-6 UN (6-UN)</option><option value="{&quot;name&quot;:&quot;6-8 UN&quot;,&quot;d&quot;:6,&quot;tpi&quot;:8,&quot;series&quot;:&quot;8-UN&quot;}">6-8 UN (8-UN)</option></select>
+        </div>
+
+        <div id="customGroup" style="display: none;">
+          <div class="custom-inputs">
+            <div>
+              <label>基本公稱外徑 D (in)</label>
+              <input type="number" id="custD" value="0.5000" step="0.001" oninput="calculateCustom()">
+            </div>
+            <div>
+              <label>每吋牙數 TPI</label>
+              <input type="number" id="custTPI" value="13" step="1" oninput="calculateCustom()">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:12px; margin-bottom:0;">
+          <label for="threadClass">公差配合等級 (Class)</label>
+          <select id="threadClass" onchange="renderData()"><option value="1A">Class 1A (寬鬆易裝配)</option><option value="2A">Class 2A (通用配合)</option><option value="3A">Class 3A (緊密精密配合)</option></select>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">📐 螺紋幾何基準 (Basic Profile)</div>
+        <div class="data-grid">
+          <div class="data-item">
+            <div class="data-label">螺距 Pitch (P)</div>
+            <div class="data-val" id="dispPitch">0.1250"</div>
+          </div>
+          <div class="data-item">
+            <div class="data-label">每吋牙數 (TPI)</div>
+            <div class="data-val" id="dispTPI">8</div>
+          </div>
+          <div class="data-item accent">
+            <div class="data-label">原始三角高 (H=0.866P)</div>
+            <div class="data-val" id="dispTriangleH">0.1083"</div>
+          </div>
+          <div class="data-item accent">
+            <div class="data-label">基準牙深 (h=0.541P)</div>
+            <div class="data-val" id="dispH">0.0677"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 右側圖表與尺寸面板 -->
+    <div>
+      <div class="card">
+        <div class="card-header">
+          <span>📋 極限尺寸規格表 (Limits of Size - ASME B1.1)</span>
+          <span class="badge badge-ext" id="classBadge">2 1/4-8 UN - Class 2A</span>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="text-align:left;">幾何項目 (Characteristic)</th>
+                <th>最小值 (Min)</th>
+                <th>最大值 (Max)</th>
+                <th>公差範圍 (Tolerance)</th>
+              </tr>
+            </thead>
+            <tbody id="dimTableBody"><tr class="row-major">
+      <td style="text-align:left; font-weight:600;">🔴 外牙大徑 Major Diameter (d)</td>
+      <td class="mono">2.2326"</td>
+      <td class="mono">2.2476"</td>
+      <td class="mono">0.0150"</td>
+    </tr><tr class="row-pitch">
+      <td style="text-align:left; font-weight:600;">🟢 外牙節徑 Pitch Diameter (d2)</td>
+      <td class="mono">2.1585"</td>
+      <td class="mono">2.1664"</td>
+      <td class="mono">0.0080"</td>
+    </tr><tr class="row-minor">
+      <td style="text-align:left; font-weight:600;">🔵 外牙小徑 Minor Diameter (d1 Ref)</td>
+      <td class="mono">2.1123"</td>
+      <td class="mono">-</td>
+      <td class="mono">-</td>
+    </tr><tr>
+      <td style="text-align:left; font-weight:600;">⚪ 配合餘隙 Allowance (es)</td>
+      <td class="mono">-</td>
+      <td class="mono">0.0024"</td>
+      <td class="mono">-</td>
+    </tr></tbody>
+          </table>
+        </div>
+
+        <div id="tapInfo" class="tap-box" style="display: none;">
+          <strong>🔩 內螺紋攻牙底孔鑽頭建議 (Tap Drill Recommendation)：</strong><br>
+          <span id="tapDrillText">
+      建議底孔鑽徑極限範圍：<strong>2.1147" ~ 2.1397"</strong> 
+      （常用 75% 牙深理論鑽頭徑約：<strong>2.1282"</strong>）
+    </span>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:0;">
+        <div class="card-header">
+          <span>🔍 動態牙型截面幾何標註 (ASME B1.1 Section Diagram)</span>
+          <span style="font-size:0.78rem; color:var(--text-muted); font-weight:600;">真實 60° 比例 | 上大徑・中節徑・下小徑</span>
+        </div>
+        <div class="diagram-box">
+          <svg id="threadSvg" viewBox="0 0 980 420" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="gridPattern" width="20" height="20" patternUnits="userSpaceOnUse">
+        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#f1f5f9" stroke-width="1"></path>
+      </pattern>
+      <pattern id="hatchExt" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="10" stroke="#bae6fd" stroke-width="2.5"></line>
+      </pattern>
+      <pattern id="hatchInt" width="10" height="10" patternTransform="rotate(-45 0 0)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="10" stroke="#fde68a" stroke-width="2.5"></line>
+      </pattern>
+      <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1e293b"></path>
+      </marker>
+      <marker id="arrowRed" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#e11d48"></path>
+      </marker>
+    </defs>
+
+    <rect width="100%" height="100%" fill="#ffffff"></rect>
+    <rect width="450" height="365" x="10" y="10" fill="url(#gridPattern)" stroke="#e2e8f0" stroke-width="1" rx="6"></rect>
+
+    
+      <rect x="40" y="88" width="380" height="8" fill="#fee2e2" opacity="0.75"></rect>
+      <rect x="40" y="140" width="380" height="7" fill="#dcfce7" opacity="0.85"></rect>
+    
+
+    <path d="
+    M 50,208 
+    L 130,70 L 210,208 
+    L 290,70 L 370,208 
+    L 430,122
+  " fill="none" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4,4"></path>
+
+    <path d="
+      M 40,174
+      L 60,174
+      L 120,88 L 140,88
+      L 200,174 Q 210,199 220,174
+      L 280,88 L 300,88
+      L 360,174 Q 370,199 380,174
+      L 420,122
+      L 420,315 L 40,315 Z
+    " fill="#f0f9ff" stroke="none"></path>
+    <path d="
+      M 40,174
+      L 60,174
+      L 120,88 L 140,88
+      L 200,174 Q 210,199 220,174
+      L 280,88 L 300,88
+      L 360,174 Q 370,199 380,174
+      L 420,122
+      L 420,315 L 40,315 Z
+    " fill="url(#hatchExt)" stroke="#0284c7" stroke-width="2.8" stroke-linejoin="round"></path>
+
+    <text x="230" y="295" font-size="12" font-weight="800" fill="#0284c7" text-anchor="middle" opacity="0.88">
+      ▲ 外螺紋金屬實體截面 (External Bolt Shaft) ▲
+    </text>
+
+    <line x1="25" y1="88" x2="420" y2="88" stroke="#e11d48" stroke-width="1.8" stroke-dasharray="6,3"></line>
+    <line x1="25" y1="140" x2="420" y2="140" stroke="#059669" stroke-width="2" stroke-dasharray="12,4,2,4"></line>
+    <line x1="25" y1="174" x2="420" y2="174" stroke="#2563eb" stroke-width="1.8" stroke-dasharray="6,3"></line>
+
+    <line x1="25" y1="70" x2="128" y2="70" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"></line>
+    <line x1="25" y1="208" x2="208" y2="208" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"></line>
+    <line x1="32" y1="74" x2="32" y2="204" stroke="#64748b" stroke-width="1.2" marker-start="url(#arrow)" marker-end="url(#arrow)"></line>
+    <rect x="14" y="122" width="36" height="32" rx="3" fill="#ffffff" stroke="#cbd5e1"></rect>
+    <text x="32" y="136" font-size="10" font-weight="800" fill="#475569" text-anchor="middle">H</text>
+    <text x="32" y="149" font-size="9" font-weight="700" fill="#64748b" text-anchor="middle">0.866P</text>
+
+    <line x1="82" y1="91" x2="82" y2="171" stroke="#e11d48" stroke-width="1.5" marker-start="url(#arrowRed)" marker-end="url(#arrowRed)"></line>
+    <rect x="55" y="116" width="54" height="32" rx="4" fill="#fff1f2" stroke="#fecdd3"></rect>
+    <text x="82" y="130" font-size="10" font-weight="800" fill="#be123c" text-anchor="middle">5/8 H</text>
+    <text x="82" y="142" font-size="9.5" font-weight="700" fill="#e11d48" text-anchor="middle">0.0677"</text>
+
+    <line x1="130" y1="53" x2="130" y2="88" stroke="#0f172a" stroke-width="1.2"></line>
+    <line x1="290" y1="53" x2="290" y2="88" stroke="#0f172a" stroke-width="1.2"></line>
+    <line x1="135" y1="62" x2="285" y2="62" stroke="#0f172a" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"></line>
+    <rect x="155" y="50" width="110" height="20" rx="4" fill="#f8fafc" stroke="#94a3b8"></rect>
+    <text x="210" y="64" font-size="11.5" font-weight="800" fill="#0f172a" text-anchor="middle">P = 0.1250"</text>
+
+    
+      <path d="M 270,105 A 40 40 0 0 0 310,105" fill="none" stroke="#e11d48" stroke-width="1.8"></path>
+      <text x="290" y="124" font-size="12" font-weight="800" fill="#e11d48" text-anchor="middle">60°</text>
+      <text x="130" y="83" font-size="10" font-weight="800" fill="#be123c" text-anchor="middle">P/8</text>
+      <text x="210" y="223" font-size="10" font-weight="700" fill="#1e40af" text-anchor="middle">H/4 (UN) | H/8 (UNR)</text>
+    
+
+    <line x1="20" y1="345" x2="440" y2="345" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="24,6,4,6"></line>
+    <text x="230" y="362" font-size="11.5" font-weight="800" fill="#dc2626" text-anchor="middle">─── 螺紋旋轉軸心線 (Thread Axis) ─── 半徑方向由下往上 ▲</text>
+
+    
+      <polyline points="420,88 448,88 465,78 480,78" fill="none" stroke="#e11d48" stroke-width="2"></polyline>
+      <circle cx="420" cy="88" r="3.5" fill="#e11d48"></circle>
+      <g transform="translate(480, 42)">
+        <rect x="0" y="0" width="480" height="74" rx="8" fill="#fff1f2" stroke="#e11d48" stroke-width="1.5"></rect>
+        <rect x="0" y="0" width="6" height="74" rx="3" fill="#e11d48"></rect>
+        <text x="16" y="21" font-size="12.5" font-weight="800" fill="#9f1239">【牙頂 Crest】 外牙大徑 Major Dia (d)</text>
+        <rect x="330" y="7" width="140" height="20" rx="10" fill="#ffffff" stroke="#e11d48" stroke-width="1"></rect>
+        <text x="400" y="21" font-size="11" font-weight="700" fill="#9f1239" text-anchor="middle">公差 Tol: 0.0150"</text>
+        <text x="16" y="45" font-size="15" font-weight="800" fill="#0f172a" font-family="Consolas, Monaco, monospace">Min: 2.2326"  ➔  Max: 2.2476"</text>
+        <text x="16" y="64" font-size="11" font-weight="600" fill="#475569">削平寬度 P/8 | 配合餘隙 es: 0.0024"</text>
+      </g>
+    
+    
+      <polyline points="420,140 448,140 465,166 480,166" fill="none" stroke="#059669" stroke-width="2"></polyline>
+      <circle cx="420" cy="140" r="3.5" fill="#059669"></circle>
+      <g transform="translate(480, 130)">
+        <rect x="0" y="0" width="480" height="74" rx="8" fill="#ecfdf5" stroke="#059669" stroke-width="1.5"></rect>
+        <rect x="0" y="0" width="6" height="74" rx="3" fill="#059669"></rect>
+        <text x="16" y="21" font-size="12.5" font-weight="800" fill="#065f46">【節線 Pitch Line】 外牙節徑 Pitch Dia (d2)</text>
+        <rect x="330" y="7" width="140" height="20" rx="10" fill="#ffffff" stroke="#059669" stroke-width="1"></rect>
+        <text x="400" y="21" font-size="11" font-weight="700" fill="#065f46" text-anchor="middle">公差 Tol: 0.0080"</text>
+        <text x="16" y="45" font-size="15" font-weight="800" fill="#0f172a" font-family="Consolas, Monaco, monospace">Min: 2.1585"  ➔  Max: 2.1664"</text>
+        <text x="16" y="64" font-size="11" font-weight="600" fill="#475569">螺紋配合與三針量測基準 (溝寬 = 牙厚 = P/2)</text>
+      </g>
+    
+    
+      <polyline points="420,174 448,174 465,254 480,254" fill="none" stroke="#2563eb" stroke-width="2"></polyline>
+      <circle cx="420" cy="174" r="3.5" fill="#2563eb"></circle>
+      <g transform="translate(480, 218)">
+        <rect x="0" y="0" width="480" height="74" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"></rect>
+        <rect x="0" y="0" width="6" height="74" rx="3" fill="#2563eb"></rect>
+        <text x="16" y="21" font-size="12.5" font-weight="800" fill="#1e40af">【牙底 Root】 外牙小徑 Minor Dia (d1 / d3)</text>
+        <rect x="330" y="7" width="140" height="20" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="1"></rect>
+        <text x="400" y="21" font-size="11" font-weight="700" fill="#1e40af" text-anchor="middle">UNR 圓弧牙底</text>
+        <text x="16" y="45" font-size="15" font-weight="800" fill="#0f172a" font-family="Consolas, Monaco, monospace">UN 平底基準下限: 2.1123"</text>
+        <text x="16" y="64" font-size="11" font-weight="600" fill="#475569">削平寬度 P/4 | 抗疲勞設計建議採用 UNR 圓弧牙底</text>
+      </g>
+    
+
+    <rect x="10" y="380" width="950" height="32" rx="6" fill="#f1f5f9" stroke="#cbd5e1"></rect>
+    <text x="24" y="401" font-size="13" font-weight="800" fill="#1e293b">
+      【2 1/4-8 UN - Class 2A (外螺紋 External)】 ASME B1.1 牙型幾何截面標註圖
+    </text>
+    <text x="945" y="401" font-size="12" font-weight="700" fill="#475569" text-anchor="end">
+      原始三角高 H = 0.1083" | 基準牙深 h = 0.0677"
+    </text>
+  </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toastMsg" style="display: none;">✅ PDF 已直出下載：ASME_B1.1_2_1_4-8_UN_2A.pdf</div>
+
+<script>
+// =========================================================================
+// 1. ASME B1.1 全系列標準規格清單 (#0 ~ 6")
+// =========================================================================
+const ALL_SPECS_LIST = [
+  { name: "#0-80 UNF", d: 0.0600, tpi: 80, series: "UNF" },
+  { name: "#1-64 UNC", d: 0.0730, tpi: 64, series: "UNC" },
+  { name: "#1-72 UNF", d: 0.0730, tpi: 72, series: "UNF" },
+  { name: "#2-56 UNC", d: 0.0860, tpi: 56, series: "UNC" },
+  { name: "#2-64 UNF", d: 0.0860, tpi: 64, series: "UNF" },
+  { name: "#3-48 UNC", d: 0.0990, tpi: 48, series: "UNC" },
+  { name: "#3-56 UNF", d: 0.0990, tpi: 56, series: "UNF" },
+  { name: "#4-40 UNC", d: 0.1120, tpi: 40, series: "UNC" },
+  { name: "#4-48 UNF", d: 0.1120, tpi: 48, series: "UNF" },
+  { name: "#5-40 UNC", d: 0.1250, tpi: 40, series: "UNC" },
+  { name: "#5-44 UNF", d: 0.1250, tpi: 44, series: "UNF" },
+  { name: "#6-32 UNC", d: 0.1380, tpi: 32, series: "UNC" },
+  { name: "#6-40 UNF", d: 0.1380, tpi: 40, series: "UNF" },
+  { name: "#8-32 UNC", d: 0.1640, tpi: 32, series: "UNC" },
+  { name: "#8-36 UNF", d: 0.1640, tpi: 36, series: "UNF" },
+  { name: "#10-24 UNC", d: 0.1900, tpi: 24, series: "UNC" },
+  { name: "#10-32 UNF", d: 0.1900, tpi: 32, series: "UNF" },
+  { name: "#12-24 UNC", d: 0.2160, tpi: 24, series: "UNC" },
+  { name: "#12-28 UNF", d: 0.2160, tpi: 28, series: "UNF" },
+  { name: "#12-32 UNEF", d: 0.2160, tpi: 32, series: "UNEF" },
+  { name: "1/4-20 UNC", d: 0.2500, tpi: 20, series: "UNC" },
+  { name: "1/4-28 UNF", d: 0.2500, tpi: 28, series: "UNF" },
+  { name: "1/4-32 UNEF", d: 0.2500, tpi: 32, series: "UNEF" },
+  { name: "5/16-18 UNC", d: 0.3125, tpi: 18, series: "UNC" },
+  { name: "5/16-20 UN", d: 0.3125, tpi: 20, series: "20-UN" },
+  { name: "5/16-24 UNF", d: 0.3125, tpi: 24, series: "UNF" },
+  { name: "5/16-28 UN", d: 0.3125, tpi: 28, series: "28-UN" },
+  { name: "5/16-32 UNEF", d: 0.3125, tpi: 32, series: "UNEF" },
+  { name: "3/8-16 UNC", d: 0.3750, tpi: 16, series: "UNC" },
+  { name: "3/8-20 UN", d: 0.3750, tpi: 20, series: "20-UN" },
+  { name: "3/8-24 UNF", d: 0.3750, tpi: 24, series: "UNF" },
+  { name: "3/8-28 UN", d: 0.3750, tpi: 28, series: "28-UN" },
+  { name: "3/8-32 UNEF", d: 0.3750, tpi: 32, series: "UNEF" },
+  { name: "7/16-14 UNC", d: 0.4375, tpi: 14, series: "UNC" },
+  { name: "7/16-16 UN", d: 0.4375, tpi: 16, series: "16-UN" },
+  { name: "7/16-20 UNF", d: 0.4375, tpi: 20, series: "UNF" },
+  { name: "7/16-28 UNEF", d: 0.4375, tpi: 28, series: "UNEF" },
+  { name: "7/16-32 UN", d: 0.4375, tpi: 32, series: "32-UN" },
+  { name: "1/2-13 UNC", d: 0.5000, tpi: 13, series: "UNC" },
+  { name: "1/2-16 UN", d: 0.5000, tpi: 16, series: "16-UN" },
+  { name: "1/2-20 UNF", d: 0.5000, tpi: 20, series: "UNF" },
+  { name: "1/2-28 UNEF", d: 0.5000, tpi: 28, series: "UNEF" },
+  { name: "1/2-32 UN", d: 0.5000, tpi: 32, series: "32-UN" },
+  { name: "9/16-12 UNC", d: 0.5625, tpi: 12, series: "UNC" },
+  { name: "9/16-16 UN", d: 0.5625, tpi: 16, series: "16-UN" },
+  { name: "9/16-18 UNF", d: 0.5625, tpi: 18, series: "UNF" },
+  { name: "9/16-20 UN", d: 0.5625, tpi: 20, series: "20-UN" },
+  { name: "9/16-24 UNEF", d: 0.5625, tpi: 24, series: "UNEF" },
+  { name: "9/16-28 UN", d: 0.5625, tpi: 28, series: "28-UN" },
+  { name: "9/16-32 UN", d: 0.5625, tpi: 32, series: "32-UN" },
+  { name: "5/8-11 UNC", d: 0.6250, tpi: 11, series: "UNC" },
+  { name: "5/8-12 UN", d: 0.6250, tpi: 12, series: "12-UN" },
+  { name: "5/8-16 UN", d: 0.6250, tpi: 16, series: "16-UN" },
+  { name: "5/8-18 UNF", d: 0.6250, tpi: 18, series: "UNF" },
+  { name: "5/8-20 UN", d: 0.6250, tpi: 20, series: "20-UN" },
+  { name: "5/8-24 UNEF", d: 0.6250, tpi: 24, series: "UNEF" },
+  { name: "5/8-28 UN", d: 0.6250, tpi: 28, series: "28-UN" },
+  { name: "5/8-32 UN", d: 0.6250, tpi: 32, series: "32-UN" },
+  { name: "11/16-12 UN", d: 0.6875, tpi: 12, series: "12-UN" },
+  { name: "11/16-16 UN", d: 0.6875, tpi: 16, series: "16-UN" },
+  { name: "11/16-20 UN", d: 0.6875, tpi: 20, series: "20-UN" },
+  { name: "11/16-24 UNEF", d: 0.6875, tpi: 24, series: "UNEF" },
+  { name: "11/16-28 UN", d: 0.6875, tpi: 28, series: "28-UN" },
+  { name: "11/16-32 UN", d: 0.6875, tpi: 32, series: "32-UN" },
+  { name: "3/4-10 UNC", d: 0.7500, tpi: 10, series: "UNC" },
+  { name: "3/4-12 UN", d: 0.7500, tpi: 12, series: "12-UN" },
+  { name: "3/4-16 UNF", d: 0.7500, tpi: 16, series: "UNF" },
+  { name: "3/4-20 UNEF", d: 0.7500, tpi: 20, series: "UNEF" },
+  { name: "3/4-28 UN", d: 0.7500, tpi: 28, series: "28-UN" },
+  { name: "3/4-32 UN", d: 0.7500, tpi: 32, series: "32-UN" },
+  { name: "13/16-12 UN", d: 0.8125, tpi: 12, series: "12-UN" },
+  { name: "13/16-16 UN", d: 0.8125, tpi: 16, series: "16-UN" },
+  { name: "13/16-20 UNEF", d: 0.8125, tpi: 20, series: "UNEF" },
+  { name: "13/16-28 UN", d: 0.8125, tpi: 28, series: "28-UN" },
+  { name: "13/16-32 UN", d: 0.8125, tpi: 32, series: "32-UN" },
+  { name: "7/8-9 UNC", d: 0.8750, tpi: 9, series: "UNC" },
+  { name: "7/8-12 UN", d: 0.8750, tpi: 12, series: "12-UN" },
+  { name: "7/8-14 UNF", d: 0.8750, tpi: 14, series: "UNF" },
+  { name: "7/8-16 UN", d: 0.8750, tpi: 16, series: "16-UN" },
+  { name: "7/8-20 UNEF", d: 0.8750, tpi: 20, series: "UNEF" },
+  { name: "7/8-28 UN", d: 0.8750, tpi: 28, series: "28-UN" },
+  { name: "7/8-32 UN", d: 0.8750, tpi: 32, series: "32-UN" },
+  { name: "15/16-12 UN", d: 0.9375, tpi: 12, series: "12-UN" },
+  { name: "15/16-16 UN", d: 0.9375, tpi: 16, series: "16-UN" },
+  { name: "15/16-20 UNEF", d: 0.9375, tpi: 20, series: "UNEF" },
+  { name: "15/16-28 UN", d: 0.9375, tpi: 28, series: "28-UN" },
+  { name: "15/16-32 UN", d: 0.9375, tpi: 32, series: "32-UN" },
+  { name: "1-8 UNC", d: 1.0000, tpi: 8, series: "UNC" },
+  { name: "1-12 UNF", d: 1.0000, tpi: 12, series: "UNF" },
+  { name: "1-14 UNS", d: 1.0000, tpi: 14, series: "UN" },
+  { name: "1-16 UN", d: 1.0000, tpi: 16, series: "16-UN" },
+  { name: "1-20 UNEF", d: 1.0000, tpi: 20, series: "UNEF" },
+  { name: "1-28 UN", d: 1.0000, tpi: 28, series: "28-UN" },
+  { name: "1-32 UN", d: 1.0000, tpi: 32, series: "32-UN" },
+  { name: "1 1/16-8 UN", d: 1.0625, tpi: 8, series: "8-UN" },
+  { name: "1 1/16-12 UN", d: 1.0625, tpi: 12, series: "12-UN" },
+  { name: "1 1/16-16 UN", d: 1.0625, tpi: 16, series: "16-UN" },
+  { name: "1 1/16-18 UNEF", d: 1.0625, tpi: 18, series: "UNEF" },
+  { name: "1 1/8-7 UNC", d: 1.1250, tpi: 7, series: "UNC" },
+  { name: "1 1/8-8 UN", d: 1.1250, tpi: 8, series: "8-UN" },
+  { name: "1 1/8-12 UNF", d: 1.1250, tpi: 12, series: "UNF" },
+  { name: "1 1/8-16 UN", d: 1.1250, tpi: 16, series: "16-UN" },
+  { name: "1 1/8-18 UNEF", d: 1.1250, tpi: 18, series: "UNEF" },
+  { name: "1 3/16-8 UN", d: 1.1875, tpi: 8, series: "8-UN" },
+  { name: "1 3/16-12 UN", d: 1.1875, tpi: 12, series: "12-UN" },
+  { name: "1 3/16-16 UN", d: 1.1875, tpi: 16, series: "16-UN" },
+  { name: "1 1/4-7 UNC", d: 1.2500, tpi: 7, series: "UNC" },
+  { name: "1 1/4-8 UN", d: 1.2500, tpi: 8, series: "8-UN" },
+  { name: "1 1/4-12 UNF", d: 1.2500, tpi: 12, series: "UNF" },
+  { name: "1 1/4-16 UN", d: 1.2500, tpi: 16, series: "16-UN" },
+  { name: "1 1/4-18 UNEF", d: 1.2500, tpi: 18, series: "UNEF" },
+  { name: "1 5/16-8 UN", d: 1.3125, tpi: 8, series: "8-UN" },
+  { name: "1 5/16-12 UN", d: 1.3125, tpi: 12, series: "12-UN" },
+  { name: "1 5/16-16 UN", d: 1.3125, tpi: 16, series: "16-UN" },
+  { name: "1 3/8-6 UNC", d: 1.3750, tpi: 6, series: "UNC" },
+  { name: "1 3/8-8 UN", d: 1.3750, tpi: 8, series: "8-UN" },
+  { name: "1 3/8-12 UNF", d: 1.3750, tpi: 12, series: "UNF" },
+  { name: "1 3/8-16 UN", d: 1.3750, tpi: 16, series: "16-UN" },
+  { name: "1 3/8-18 UNEF", d: 1.3750, tpi: 18, series: "UNEF" },
+  { name: "1 7/16-6 UN", d: 1.4375, tpi: 6, series: "6-UN" },
+  { name: "1 7/16-8 UN", d: 1.4375, tpi: 8, series: "8-UN" },
+  { name: "1 7/16-12 UN", d: 1.4375, tpi: 12, series: "12-UN" },
+  { name: "1 7/16-16 UN", d: 1.4375, tpi: 16, series: "16-UN" },
+  { name: "1 1/2-6 UNC", d: 1.5000, tpi: 6, series: "UNC" },
+  { name: "1 1/2-8 UN", d: 1.5000, tpi: 8, series: "8-UN" },
+  { name: "1 1/2-12 UNF", d: 1.5000, tpi: 12, series: "UNF" },
+  { name: "1 1/2-16 UN", d: 1.5000, tpi: 16, series: "16-UN" },
+  { name: "1 1/2-18 UNEF", d: 1.5000, tpi: 18, series: "UNEF" },
+  { name: "1 5/8-6 UN", d: 1.6250, tpi: 6, series: "6-UN" },
+  { name: "1 5/8-8 UN", d: 1.6250, tpi: 8, series: "8-UN" },
+  { name: "1 5/8-12 UN", d: 1.6250, tpi: 12, series: "12-UN" },
+  { name: "1 5/8-16 UN", d: 1.6250, tpi: 16, series: "16-UN" },
+  { name: "1 3/4-5 UNC", d: 1.7500, tpi: 5, series: "UNC" },
+  { name: "1 3/4-6 UN", d: 1.7500, tpi: 6, series: "6-UN" },
+  { name: "1 3/4-8 UN", d: 1.7500, tpi: 8, series: "8-UN" },
+  { name: "1 3/4-12 UN", d: 1.7500, tpi: 12, series: "12-UN" },
+  { name: "1 3/4-16 UN", d: 1.7500, tpi: 16, series: "16-UN" },
+  { name: "1 7/8-6 UN", d: 1.8750, tpi: 6, series: "6-UN" },
+  { name: "1 7/8-8 UN", d: 1.8750, tpi: 8, series: "8-UN" },
+  { name: "1 7/8-12 UN", d: 1.8750, tpi: 12, series: "12-UN" },
+  { name: "1 7/8-16 UN", d: 1.8750, tpi: 16, series: "16-UN" },
+  { name: "2-4 1/2 UNC", d: 2.0000, tpi: 4.5, series: "UNC" },
+  { name: "2-6 UN", d: 2.0000, tpi: 6, series: "6-UN" },
+  { name: "2-8 UN", d: 2.0000, tpi: 8, series: "8-UN" },
+  { name: "2-12 UN", d: 2.0000, tpi: 12, series: "12-UN" },
+  { name: "2-16 UN", d: 2.0000, tpi: 16, series: "16-UN" },
+  { name: "2 1/4-4 1/2 UNC", d: 2.2500, tpi: 4.5, series: "UNC" },
+  { name: "2 1/4-6 UN", d: 2.2500, tpi: 6, series: "6-UN" },
+  { name: "2 1/4-8 UN", d: 2.2500, tpi: 8, series: "8-UN" },
+  { name: "2 1/4-12 UN", d: 2.2500, tpi: 12, series: "12-UN" },
+  { name: "2 1/2-4 UNC", d: 2.5000, tpi: 4, series: "UNC" },
+  { name: "2 1/2-6 UN", d: 2.5000, tpi: 6, series: "6-UN" },
+  { name: "2 1/2-8 UN", d: 2.5000, tpi: 8, series: "8-UN" },
+  { name: "2 1/2-12 UN", d: 2.5000, tpi: 12, series: "12-UN" },
+  { name: "2 3/4-4 UNC", d: 2.7500, tpi: 4, series: "UNC" },
+  { name: "2 3/4-6 UN", d: 2.7500, tpi: 6, series: "6-UN" },
+  { name: "2 3/4-8 UN", d: 2.7500, tpi: 8, series: "8-UN" },
+  { name: "2 3/4-12 UN", d: 2.7500, tpi: 12, series: "12-UN" },
+  { name: "3-4 UNC", d: 3.0000, tpi: 4, series: "UNC" },
+  { name: "3-6 UN", d: 3.0000, tpi: 6, series: "6-UN" },
+  { name: "3-8 UN", d: 3.0000, tpi: 8, series: "8-UN" },
+  { name: "3-12 UN", d: 3.0000, tpi: 12, series: "12-UN" },
+  { name: "3 1/4-4 UNC", d: 3.2500, tpi: 4, series: "UNC" },
+  { name: "3 1/4-6 UN", d: 3.2500, tpi: 6, series: "6-UN" },
+  { name: "3 1/4-8 UN", d: 3.2500, tpi: 8, series: "8-UN" },
+  { name: "3 1/2-4 UNC", d: 3.5000, tpi: 4, series: "UNC" },
+  { name: "3 1/2-6 UN", d: 3.5000, tpi: 6, series: "6-UN" },
+  { name: "3 1/2-8 UN", d: 3.5000, tpi: 8, series: "8-UN" },
+  { name: "3 3/4-4 UNC", d: 3.7500, tpi: 4, series: "UNC" },
+  { name: "3 3/4-6 UN", d: 3.7500, tpi: 6, series: "6-UN" },
+  { name: "3 3/4-8 UN", d: 3.7500, tpi: 8, series: "8-UN" },
+  { name: "4-4 UNC", d: 4.0000, tpi: 4, series: "UNC" },
+  { name: "4-6 UN", d: 4.0000, tpi: 6, series: "6-UN" },
+  { name: "4-8 UN", d: 4.0000, tpi: 8, series: "8-UN" },
+  { name: "4 1/2-4 UN", d: 4.5000, tpi: 4, series: "4-UN" },
+  { name: "4 1/2-6 UN", d: 4.5000, tpi: 6, series: "6-UN" },
+  { name: "4 1/2-8 UN", d: 4.5000, tpi: 8, series: "8-UN" },
+  { name: "5-4 UN", d: 5.0000, tpi: 4, series: "4-UN" },
+  { name: "5-6 UN", d: 5.0000, tpi: 6, series: "6-UN" },
+  { name: "5-8 UN", d: 5.0000, tpi: 8, series: "8-UN" },
+  { name: "5 1/2-4 UN", d: 5.5000, tpi: 4, series: "4-UN" },
+  { name: "5 1/2-6 UN", d: 5.5000, tpi: 6, series: "6-UN" },
+  { name: "5 1/2-8 UN", d: 5.5000, tpi: 8, series: "8-UN" },
+  { name: "6-4 UN", d: 6.0000, tpi: 4, series: "4-UN" },
+  { name: "6-6 UN", d: 6.0000, tpi: 6, series: "6-UN" },
+  { name: "6-8 UN", d: 6.0000, tpi: 8, series: "8-UN" }
+];
+
+// =========================================================================
+// 2. ASME B1.1 官方查表常數庫 (Table 2 校準覆蓋)
+// =========================================================================
+const STANDARD_TABLE_DATA = {
+  "#0-80 UNF": {
+    ext: { "2A": { allowance: 0.0005, d_max: 0.0595, d_min: 0.0563, pd_max: 0.0514, pd_min: 0.0496, un_min: 0.0446 }, "3A": { allowance: 0.0000, d_max: 0.0600, d_min: 0.0568, pd_max: 0.0519, pd_min: 0.0506, un_min: 0.0451 } },
+    int: { "2B": { minor_min: 0.0465, minor_max: 0.0514, pd_min: 0.0519, pd_max: 0.0542, d_min: 0.0600 }, "3B": { minor_min: 0.0465, minor_max: 0.0514, pd_min: 0.0519, pd_max: 0.0536, d_min: 0.0600 } }
+  },
+  "#1-64 UNC": {
+    ext: { "2A": { allowance: 0.0006, d_max: 0.0724, d_min: 0.0686, pd_max: 0.0623, pd_min: 0.0603, un_min: 0.0538 }, "3A": { allowance: 0.0000, d_max: 0.0730, d_min: 0.0692, pd_max: 0.0629, pd_min: 0.0614, un_min: 0.0544 } },
+    int: { "2B": { minor_min: 0.0561, minor_max: 0.0623, pd_min: 0.0629, pd_max: 0.0655, d_min: 0.0730 }, "3B": { minor_min: 0.0561, minor_max: 0.0623, pd_min: 0.0629, pd_max: 0.0648, d_min: 0.0730 } }
+  },
+  "#2-56 UNC": {
+    ext: { "2A": { allowance: 0.0006, d_max: 0.0854, d_min: 0.0813, pd_max: 0.0738, pd_min: 0.0717, un_min: 0.0641 }, "3A": { allowance: 0.0000, d_max: 0.0860, d_min: 0.0819, pd_max: 0.0744, pd_min: 0.0728, un_min: 0.0647 } },
+    int: { "2B": { minor_min: 0.0667, minor_max: 0.0737, pd_min: 0.0744, pd_max: 0.0772, d_min: 0.0860 }, "3B": { minor_min: 0.0667, minor_max: 0.0737, pd_min: 0.0744, pd_max: 0.0765, d_min: 0.0860 } }
+  },
+  "#4-40 UNC": {
+    ext: { "2A": { allowance: 0.0008, d_max: 0.1112, d_min: 0.1061, pd_max: 0.0950, pd_min: 0.0925, un_min: 0.0814 }, "3A": { allowance: 0.0000, d_max: 0.1120, d_min: 0.1069, pd_max: 0.0958, pd_min: 0.0939, un_min: 0.0822 } },
+    int: { "2B": { minor_min: 0.0849, minor_max: 0.0939, pd_min: 0.0958, pd_max: 0.0991, d_min: 0.1120 }, "3B": { minor_min: 0.0849, minor_max: 0.0939, pd_min: 0.0958, pd_max: 0.0982, d_min: 0.1120 } }
+  },
+  "#6-32 UNC": {
+    ext: { "2A": { allowance: 0.0009, d_max: 0.1371, d_min: 0.1312, pd_max: 0.1168, pd_min: 0.1141, un_min: 0.1000 }, "3A": { allowance: 0.0000, d_max: 0.1380, d_min: 0.1320, pd_max: 0.1177, pd_min: 0.1156, un_min: 0.1008 } },
+    int: { "2B": { minor_min: 0.1040, minor_max: 0.1140, pd_min: 0.1177, pd_max: 0.1214, d_min: 0.1380 }, "3B": { minor_min: 0.1040, minor_max: 0.1139, pd_min: 0.1177, pd_max: 0.1204, d_min: 0.1380 } }
+  },
+  "#8-32 UNC": {
+    ext: { "2A": { allowance: 0.0009, d_max: 0.1631, d_min: 0.1571, pd_max: 0.1428, pd_min: 0.1399, un_min: 0.1259 }, "3A": { allowance: 0.0000, d_max: 0.1640, d_min: 0.1580, pd_max: 0.1437, pd_min: 0.1415, un_min: 0.1268 } },
+    int: { "2B": { minor_min: 0.1300, minor_max: 0.1390, pd_min: 0.1437, pd_max: 0.1475, d_min: 0.1640 }, "3B": { minor_min: 0.1300, minor_max: 0.1388, pd_min: 0.1437, pd_max: 0.1465, d_min: 0.1640 } }
+  },
+  "#10-24 UNC": {
+    ext: { "2A": { allowance: 0.0010, d_max: 0.1890, d_min: 0.1818, pd_max: 0.1619, pd_min: 0.1586, un_min: 0.1394 }, "3A": { allowance: 0.0000, d_max: 0.1900, d_min: 0.1828, pd_max: 0.1629, pd_min: 0.1604, un_min: 0.1404 } },
+    int: { "2B": { minor_min: 0.1450, minor_max: 0.1560, pd_min: 0.1629, pd_max: 0.1672, d_min: 0.1900 }, "3B": { minor_min: 0.1450, minor_max: 0.1555, pd_min: 0.1629, pd_max: 0.1661, d_min: 0.1900 } }
+  },
+  "#10-32 UNF": {
+    ext: { "2A": { allowance: 0.0009, d_max: 0.1891, d_min: 0.1831, pd_max: 0.1688, pd_min: 0.1658, un_min: 0.1519 }, "3A": { allowance: 0.0000, d_max: 0.1900, d_min: 0.1840, pd_max: 0.1697, pd_min: 0.1674, un_min: 0.1528 } },
+    int: { "2B": { minor_min: 0.1560, minor_max: 0.1640, pd_min: 0.1697, pd_max: 0.1736, d_min: 0.1900 }, "3B": { minor_min: 0.1560, minor_max: 0.1641, pd_min: 0.1697, pd_max: 0.1726, d_min: 0.1900 } }
+  },
+  "1/4-20 UNC": {
+    ext: {
+      "1A": { allowance: 0.0011, d_max: 0.2489, d_min: 0.2367, pd_max: 0.2164, pd_min: 0.2108, un_min: 0.1894 },
+      "2A": { allowance: 0.0011, d_max: 0.2489, d_min: 0.2408, pd_max: 0.2164, pd_min: 0.2127, un_min: 0.1894 },
+      "3A": { allowance: 0.0000, d_max: 0.2500, d_min: 0.2419, pd_max: 0.2175, pd_min: 0.2147, un_min: 0.1905 }
+    },
+    int: {
+      "1B": { minor_min: 0.1960, minor_max: 0.2070, pd_min: 0.2175, pd_max: 0.2248, d_min: 0.2500 },
+      "2B": { minor_min: 0.1960, minor_max: 0.2070, pd_min: 0.2175, pd_max: 0.2224, d_min: 0.2500 },
+      "3B": { minor_min: 0.1960, minor_max: 0.2067, pd_min: 0.2175, pd_max: 0.2211, d_min: 0.2500 }
+    }
+  },
+  "1/4-28 UNF": {
+    ext: {
+      "1A": { allowance: 0.0010, d_max: 0.2490, d_min: 0.2392, pd_max: 0.2258, pd_min: 0.2208, un_min: 0.2065 },
+      "2A": { allowance: 0.0010, d_max: 0.2490, d_min: 0.2425, pd_max: 0.2258, pd_min: 0.2225, un_min: 0.2065 },
+      "3A": { allowance: 0.0000, d_max: 0.2500, d_min: 0.2435, pd_max: 0.2268, pd_min: 0.2243, un_min: 0.2075 }
+    },
+    int: {
+      "1B": { minor_min: 0.2110, minor_max: 0.2200, pd_min: 0.2268, pd_max: 0.2333, d_min: 0.2500 },
+      "2B": { minor_min: 0.2110, minor_max: 0.2200, pd_min: 0.2268, pd_max: 0.2311, d_min: 0.2500 },
+      "3B": { minor_min: 0.2110, minor_max: 0.2190, pd_min: 0.2268, pd_max: 0.2300, d_min: 0.2500 }
+    }
+  },
+  "5/16-18 UNC": {
+    ext: {
+      "1A": { allowance: 0.0012, d_max: 0.3113, d_min: 0.2982, pd_max: 0.2752, pd_min: 0.2691, un_min: 0.2451 },
+      "2A": { allowance: 0.0012, d_max: 0.3113, d_min: 0.3026, pd_max: 0.2752, pd_min: 0.2712, un_min: 0.2451 },
+      "3A": { allowance: 0.0000, d_max: 0.3125, d_min: 0.3038, pd_max: 0.2764, pd_min: 0.2734, un_min: 0.2463 }
+    },
+    int: {
+      "1B": { minor_min: 0.2520, minor_max: 0.2650, pd_min: 0.2764, pd_max: 0.2843, d_min: 0.3125 },
+      "2B": { minor_min: 0.2520, minor_max: 0.2650, pd_min: 0.2764, pd_max: 0.2817, d_min: 0.3125 },
+      "3B": { minor_min: 0.2520, minor_max: 0.2630, pd_min: 0.2764, pd_max: 0.2803, d_min: 0.3125 }
+    }
+  },
+  "3/8-16 UNC": {
+    ext: {
+      "1A": { allowance: 0.0013, d_max: 0.3737, d_min: 0.3595, pd_max: 0.3331, pd_min: 0.3266, un_min: 0.2993 },
+      "2A": { allowance: 0.0013, d_max: 0.3737, d_min: 0.3643, pd_max: 0.3331, pd_min: 0.3287, un_min: 0.2993 },
+      "3A": { allowance: 0.0000, d_max: 0.3750, d_min: 0.3656, pd_max: 0.3344, pd_min: 0.3311, un_min: 0.3006 }
+    },
+    int: {
+      "1B": { minor_min: 0.3070, minor_max: 0.3210, pd_min: 0.3344, pd_max: 0.3429, d_min: 0.3750 },
+      "2B": { minor_min: 0.3070, minor_max: 0.3210, pd_min: 0.3344, pd_max: 0.3401, d_min: 0.3750 },
+      "3B": { minor_min: 0.3070, minor_max: 0.3182, pd_min: 0.3344, pd_max: 0.3387, d_min: 0.3750 }
+    }
+  },
+  "1/2-13 UNC": {
+    ext: {
+      "1A": { allowance: 0.0015, d_max: 0.4985, d_min: 0.4822, pd_max: 0.4485, pd_min: 0.4411, un_min: 0.4069 },
+      "2A": { allowance: 0.0015, d_max: 0.4985, d_min: 0.4876, pd_max: 0.4485, pd_min: 0.4435, un_min: 0.4069 },
+      "3A": { allowance: 0.0000, d_max: 0.5000, d_min: 0.4891, pd_max: 0.4500, pd_min: 0.4463, un_min: 0.4084 }
+    },
+    int: {
+      "1B": { minor_min: 0.4170, minor_max: 0.4340, pd_min: 0.4500, pd_max: 0.4597, d_min: 0.5000 },
+      "2B": { minor_min: 0.4170, minor_max: 0.4340, pd_min: 0.4500, pd_max: 0.4565, d_min: 0.5000 },
+      "3B": { minor_min: 0.4170, minor_max: 0.4284, pd_min: 0.4500, pd_max: 0.4548, d_min: 0.5000 }
+    }
+  },
+  "5/8-11 UNC": {
+    ext: {
+      "1A": { allowance: 0.0017, d_max: 0.6233, d_min: 0.6051, pd_max: 0.5643, pd_min: 0.5560, un_min: 0.5150 },
+      "2A": { allowance: 0.0017, d_max: 0.6233, d_min: 0.6112, pd_max: 0.5643, pd_min: 0.5588, un_min: 0.5150 },
+      "3A": { allowance: 0.0000, d_max: 0.6250, d_min: 0.6129, pd_max: 0.5660, pd_min: 0.5619, un_min: 0.5167 }
+    },
+    int: {
+      "1B": { minor_min: 0.5270, minor_max: 0.5460, pd_min: 0.5660, pd_max: 0.5767, d_min: 0.6250 },
+      "2B": { minor_min: 0.5270, minor_max: 0.5460, pd_min: 0.5660, pd_max: 0.5732, d_min: 0.6250 },
+      "3B": { minor_min: 0.5270, minor_max: 0.5391, pd_min: 0.5660, pd_max: 0.5714, d_min: 0.6250 }
+    }
+  },
+  "3/4-10 UNC": {
+    ext: {
+      "1A": { allowance: 0.0018, d_max: 0.7482, d_min: 0.7288, pd_max: 0.6832, pd_min: 0.6744, un_min: 0.6291 },
+      "2A": { allowance: 0.0018, d_max: 0.7482, d_min: 0.7353, pd_max: 0.6832, pd_min: 0.6773, un_min: 0.6291 },
+      "3A": { allowance: 0.0000, d_max: 0.7500, d_min: 0.7371, pd_max: 0.6850, pd_min: 0.6806, un_min: 0.6309 }
+    },
+    int: {
+      "1B": { minor_min: 0.6420, minor_max: 0.6630, pd_min: 0.6850, pd_max: 0.6965, d_min: 0.7500 },
+      "2B": { minor_min: 0.6420, minor_max: 0.6630, pd_min: 0.6850, pd_max: 0.6927, d_min: 0.7500 },
+      "3B": { minor_min: 0.6420, minor_max: 0.6545, pd_min: 0.6850, pd_max: 0.6907, d_min: 0.7500 }
+    }
+  },
+  "1-8 UNC": {
+    ext: {
+      "1A": { allowance: 0.0020, d_max: 0.9980, d_min: 0.9755, pd_max: 0.9168, pd_min: 0.9067, un_min: 0.8492 },
+      "2A": { allowance: 0.0020, d_max: 0.9980, d_min: 0.9830, pd_max: 0.9168, pd_min: 0.9101, un_min: 0.8492 },
+      "3A": { allowance: 0.0000, d_max: 1.0000, d_min: 0.9850, pd_max: 0.9188, pd_min: 0.9137, un_min: 0.8512 }
+    },
+    int: {
+      "1B": { minor_min: 0.8650, minor_max: 0.8900, pd_min: 0.9188, pd_max: 0.9320, d_min: 1.0000 },
+      "2B": { minor_min: 0.8650, minor_max: 0.8900, pd_min: 0.9188, pd_max: 0.9276, d_min: 1.0000 },
+      "3B": { minor_min: 0.8650, minor_max: 0.8797, pd_min: 0.9188, pd_max: 0.9254, d_min: 1.0000 }
+    }
+  }
+};
+
+// =========================================================================
+// 3. ASME B1.1 公式推算核心
+// =========================================================================
+function computeThreadDimensions(D, tpi, series, name) {
+  if (STANDARD_TABLE_DATA[name]) {
+    const p = 1 / tpi;
+    return {
+      name: name, D: D, tpi: tpi, P: p, H: 0.86602540 * p,
+      ext: STANDARD_TABLE_DATA[name].ext,
+      int: STANDARD_TABLE_DATA[name].int
+    };
+  }
+
+  const P = 1 / tpi;
+  const H = 0.86602540 * P;
+  let LE = D;
+  if (['UNEF', '12-UN', '16-UN', '20-UN', '28-UN', '32-UN', 'UNS'].includes(series)) {
+    LE = 9 * P;
+  }
+
+  const Td2_2A = 0.0015 * Math.cbrt(D) + 0.0015 * Math.sqrt(LE) + 0.015 * Math.cbrt(Math.pow(P, 2));
+  const es_2A = 0.300 * Td2_2A;
+
+  const Td_1A = 0.090 * Math.cbrt(Math.pow(P, 2));
+  const Td_2A = 0.060 * Math.cbrt(Math.pow(P, 2));
+  const Td_3A = 0.060 * Math.cbrt(Math.pow(P, 2));
+
+  const Td2_1A = 1.500 * Td2_2A;
+  const Td2_3A = 0.750 * Td2_2A;
+
+  const TD2_1B = 1.950 * Td2_2A;
+  const TD2_2B = 1.300 * Td2_2A;
+  const TD2_3B = 0.975 * Td2_2A;
+
+  let TD1_2B = 0.25 * P - 0.4 * Math.pow(P, 2);
+  if (D < 0.25) {
+    TD1_2B = (0.05 * Math.cbrt(Math.pow(P, 2)) + 0.03 * P / D) - 0.002;
+  }
+  let TD1_1B = TD1_2B * 1.5;
+  let TD1_3B = (0.05 * Math.cbrt(Math.pow(P, 2)) + 0.03 * P / D) - 0.002;
+  if (tpi >= 13) {
+    const min3B = 0.23 * P - 1.5 * Math.pow(P, 2);
+    if (TD1_3B < min3B) TD1_3B = min3B;
+  } else {
+    if (TD1_3B < 0.120 * P) TD1_3B = 0.120 * P;
+  }
+
+  const d2_bsc = D - 0.64951905 * P;
+  const d1_bsc = D - 1.08253175 * P;
+
+  return {
+    name: name, D: D, tpi: tpi, P: P, H: H,
+    ext: {
+      "1A": { allowance: es_2A, d_max: D - es_2A, d_min: D - es_2A - Td_1A, pd_max: d2_bsc - es_2A, pd_min: d2_bsc - es_2A - Td2_1A, un_min: d1_bsc - es_2A },
+      "2A": { allowance: es_2A, d_max: D - es_2A, d_min: D - es_2A - Td_2A, pd_max: d2_bsc - es_2A, pd_min: d2_bsc - es_2A - Td2_2A, un_min: d1_bsc - es_2A },
+      "3A": { allowance: 0.0000, d_max: D, d_min: D - Td_3A, pd_max: d2_bsc, pd_min: d2_bsc - Td2_3A, un_min: d1_bsc }
+    },
+    int: {
+      "1B": { minor_min: d1_bsc, minor_max: d1_bsc + TD1_1B, pd_min: d2_bsc, pd_max: d2_bsc + TD2_1B, d_min: D },
+      "2B": { minor_min: d1_bsc, minor_max: d1_bsc + TD1_2B, pd_min: d2_bsc, pd_max: d2_bsc + TD2_2B, d_min: D },
+      "3B": { minor_min: d1_bsc, minor_max: d1_bsc + TD1_3B, pd_min: d2_bsc, pd_max: d2_bsc + TD2_3B, d_min: D }
+    }
+  };
+}
+
+// =========================================================================
+// 4. UI 互動與動態牙型截面幾何渲染
+// =========================================================================
+let currentType = 'int';
+let activeFilter = 'ALL';
+let currentSpecData = null;
+
+function init() {
+  populateDropdown(ALL_SPECS_LIST);
+  selectSpecByName("1/4-20 UNC");
+}
+
+function setType(type) {
+  currentType = type;
+  document.getElementById("btnExt").className = "radio-btn " + (type === 'ext' ? 'active ext' : '');
+  document.getElementById("btnInt").className = "radio-btn " + (type === 'int' ? 'active int' : '');
+  updateClassOptions();
+}
+
+function setSeriesFilter(filter, el) {
+  activeFilter = filter;
+  const chips = document.querySelectorAll("#seriesFilters .chip");
+  chips.forEach(c => c.classList.remove("active"));
+  if (el) el.classList.add("active");
+
+  const presetGroup = document.getElementById("presetSelectGroup");
+  const customGroup = document.getElementById("customGroup");
+
+  if (filter === 'CUSTOM') {
+    presetGroup.style.display = 'none';
+    customGroup.style.display = 'block';
+    calculateCustom();
+  } else {
+    presetGroup.style.display = 'block';
+    customGroup.style.display = 'none';
+    filterDropdown();
+  }
+}
+
+function filterDropdown() {
+  const keyword = document.getElementById("threadSearch").value.toLowerCase().trim();
+  let list = ALL_SPECS_LIST;
+
+  if (activeFilter !== 'ALL') {
+    list = list.filter(item => item.series === activeFilter || item.name.includes(activeFilter));
+  }
+  if (keyword) {
+    list = list.filter(item => item.name.toLowerCase().includes(keyword) || item.d.toString().includes(keyword));
+  }
+
+  populateDropdown(list);
+  if (list.length > 0) {
+    document.getElementById("threadSpec").selectedIndex = 0;
+    onSpecChange();
+  }
+}
+
+function populateDropdown(list) {
+  const select = document.getElementById("threadSpec");
+  select.innerHTML = "";
+  document.getElementById("countDisplay").textContent = list.length;
+
+  list.forEach(item => {
+    const opt = document.createElement("option");
+    opt.value = JSON.stringify(item);
+    opt.textContent = `${item.name} (${item.series})`;
+    select.appendChild(opt);
+  });
+}
+
+function selectSpecByName(name) {
+  const select = document.getElementById("threadSpec");
+  for (let i = 0; i < select.options.length; i++) {
+    const item = JSON.parse(select.options[i].value);
+    if (item.name === name) {
+      select.selectedIndex = i;
+      break;
+    }
+  }
+  onSpecChange();
+}
+
+function onSpecChange() {
+  const select = document.getElementById("threadSpec");
+  if (!select.value) return;
+  const spec = JSON.parse(select.value);
+  currentSpecData = computeThreadDimensions(spec.d, spec.tpi, spec.series, spec.name);
+  updateClassOptions();
+}
+
+function calculateCustom() {
+  const d = parseFloat(document.getElementById("custD").value) || 0.25;
+  const tpi = parseFloat(document.getElementById("custTPI").value) || 20;
+  const name = `${d.toFixed(4)}-${tpi} UNS`;
+  currentSpecData = computeThreadDimensions(d, tpi, 'UNS', name);
+  updateClassOptions();
+}
+
+function updateClassOptions() {
+  const classSelect = document.getElementById("threadClass");
+  classSelect.innerHTML = "";
+  if (!currentSpecData || !currentSpecData[currentType]) return;
+
+  const classes = Object.keys(currentSpecData[currentType]);
+  classes.forEach(cls => {
+    const opt = document.createElement("option");
+    opt.value = cls;
+    opt.textContent = `Class ${cls} ${cls.includes('2') ? '(通用配合)' : cls.includes('3') ? '(緊密精密配合)' : '(寬鬆易裝配)'}`;
+    if (cls === '2B' || cls === '2A') opt.selected = true;
+    classSelect.appendChild(opt);
+  });
+  renderData();
+}
+
+function fmt(val, isMm) {
+  if (val === undefined || val === null || isNaN(val)) return "-";
+  if (isMm) {
+    return (val * 25.4).toFixed(3) + " mm";
+  }
+  return val.toFixed(4) + '"';
+}
+
+function renderData() {
+  if (!currentSpecData) return;
+  const isMm = document.getElementById("unitMm").checked;
+  const cls = document.getElementById("threadClass").value || (currentType === 'ext' ? '2A' : '2B');
+  const typeData = currentSpecData[currentType][cls];
+  if (!typeData) return;
+
+  const pitch = currentSpecData.P;
+  const hBasic = 0.54127 * pitch;
+  const HTriangle = 0.866025 * pitch;
+
+  document.getElementById("dispPitch").textContent = fmt(pitch, isMm);
+  document.getElementById("dispTPI").textContent = currentSpecData.tpi;
+  document.getElementById("dispTriangleH").textContent = fmt(HTriangle, isMm);
+  document.getElementById("dispH").textContent = fmt(hBasic, isMm);
+
+  const badge = document.getElementById("classBadge");
+  badge.textContent = `${currentSpecData.name} - Class ${cls}`;
+  badge.className = "badge " + (currentType === 'ext' ? 'badge-ext' : 'badge-int');
+
+  const tbody = document.getElementById("dimTableBody");
+  tbody.innerHTML = "";
+
+  let rows = [];
+  if (currentType === 'ext') {
+    document.getElementById("tapInfo").style.display = "none";
+    rows = [
+      { name: "🔴 外牙大徑 Major Diameter (d)", min: typeData.d_min, max: typeData.d_max, tol: typeData.d_max - typeData.d_min, cls: 'row-major' },
+      { name: "🟢 外牙節徑 Pitch Diameter (d2)", min: typeData.pd_min, max: typeData.pd_max, tol: typeData.pd_max - typeData.pd_min, cls: 'row-pitch' },
+      { name: "🔵 外牙小徑 Minor Diameter (d1 Ref)", min: typeData.un_min, max: "-", tol: "-", cls: 'row-minor' },
+      { name: "⚪ 配合餘隙 Allowance (es)", min: "-", max: typeData.allowance, tol: "-", cls: '' }
+    ];
+  } else {
+    document.getElementById("tapInfo").style.display = "block";
+    const tapDrillMin = typeData.minor_min;
+    const tapDrillMax = typeData.minor_max;
+    document.getElementById("tapDrillText").innerHTML = `
+      建議底孔鑽徑極限範圍：<strong>${fmt(tapDrillMin, isMm)} ~ ${fmt(tapDrillMax, isMm)}</strong> 
+      （常用 75% 牙深理論鑽頭徑約：<strong>${fmt(currentSpecData.D - pitch * 0.9743, isMm)}</strong>）
+    `;
+
+    rows = [
+      { name: "🔵 內牙大徑 Major Diameter (D min)", min: typeData.d_min, max: "-", tol: "-", cls: 'row-major' },
+      { name: "🟢 內牙節徑 Pitch Diameter (D2)", min: typeData.pd_min, max: typeData.pd_max, tol: typeData.pd_max - typeData.pd_min, cls: 'row-pitch' },
+      { name: "🟠 內牙小徑 Minor Diameter (D1)", min: typeData.minor_min, max: typeData.minor_max, tol: typeData.minor_max - typeData.minor_min, cls: 'row-minor' }
+    ];
+  }
+
+  rows.forEach(r => {
+    const tr = document.createElement("tr");
+    if (r.cls) tr.className = r.cls;
+    tr.innerHTML = `
+      <td style="text-align:left; font-weight:600;">${r.name}</td>
+      <td class="mono">${typeof r.min === 'number' ? fmt(r.min, isMm) : r.min}</td>
+      <td class="mono">${typeof r.max === 'number' ? fmt(r.max, isMm) : r.max}</td>
+      <td class="mono">${typeof r.tol === 'number' ? fmt(r.tol, isMm) : r.tol}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  drawDynamicSvg(currentType, cls, currentSpecData, typeData, isMm);
+}
+
+// =========================================================================
+// 5. 優化版動態牙型截面幾何標註 (ASME B1.1 工程截面視圖)
+// =========================================================================
+function drawDynamicSvg(type, cls, spec, data, isMm) {
+  const svg = document.getElementById("threadSvg");
+  svg.setAttribute("viewBox", "0 0 980 420");
+  const isExt = type === 'ext';
+
+  const yApexTop = 70;
+  const yMajor   = 88;   // 大徑 D / d (距尖頂 H/8)
+  const yPitch   = 140;  // 節徑 D2 / d2 (3H/8處)
+  const yMinor   = 174;  // 小徑 D1 / d1 (距尖底 H/4)
+  const yUNR     = 191;  // 外牙 UNR 圓弧牙底 (距尖底 H/8)
+  const yApexBot = 208;
+
+  const mainStroke = isExt ? "#0284c7" : "#d97706";
+  const hatchId    = isExt ? "hatchExt" : "hatchInt";
+
+  const basicTrianglePath = `
+    M 50,${yApexBot} 
+    L 130,${yApexTop} L 210,${yApexBot} 
+    L 290,${yApexTop} L 370,${yApexBot} 
+    L 430,${yApexTop + 52}
+  `;
+
+  let profilePath = "";
+  let tolBandsSvg = "";
+
+  if (isExt) {
+    profilePath = `
+      M 40,${yMinor}
+      L 60,${yMinor}
+      L 120,${yMajor} L 140,${yMajor}
+      L 200,${yMinor} Q 210,${yUNR + 8} 220,${yMinor}
+      L 280,${yMajor} L 300,${yMajor}
+      L 360,${yMinor} Q 370,${yUNR + 8} 380,${yMinor}
+      L 420,${yMajor + 34}
+      L 420,315 L 40,315 Z
+    `;
+    tolBandsSvg = `
+      <rect x="40" y="${yMajor}" width="380" height="8" fill="#fee2e2" opacity="0.75"/>
+      <rect x="40" y="${yPitch}" width="380" height="7" fill="#dcfce7" opacity="0.85"/>
+    `;
+  } else {
+    profilePath = `
+      M 40,${yMinor}
+      L 70,${yMinor}
+      L 120,${yMajor} L 140,${yMajor}
+      L 190,${yMinor} L 230,${yMinor}
+      L 280,${yMajor} L 300,${yMajor}
+      L 350,${yMinor} L 390,${yMinor}
+      L 420,${yMajor + 34}
+      L 420,22 L 40,22 Z
+    `;
+    tolBandsSvg = `
+      <rect x="40" y="${yPitch - 7}" width="380" height="7" fill="#dcfce7" opacity="0.85"/>
+      <rect x="40" y="${yMinor - 10}" width="380" height="10" fill="#fef3c7" opacity="0.85"/>
+    `;
+  }
+
+  let cardMajor = {}, cardPitch = {}, cardMinor = {};
+
+  if (isExt) {
+    cardMajor = {
+      yLine: yMajor, yCard: 42,
+      tag: "牙頂 Crest", title: "外牙大徑 Major Dia (d)",
+      badge: `公差 Tol: ${fmt(data.d_max - data.d_min, isMm)}`,
+      bg: "#fff1f2", border: "#e11d48", text: "#9f1239",
+      val: `Min: ${fmt(data.d_min, isMm)}  ➔  Max: ${fmt(data.d_max, isMm)}`,
+      sub: `削平寬度 P/8 | 配合餘隙 es: ${fmt(data.allowance, isMm)}`
+    };
+    cardPitch = {
+      yLine: yPitch, yCard: 130,
+      tag: "節線 Pitch Line", title: "外牙節徑 Pitch Dia (d2)",
+      badge: `公差 Tol: ${fmt(data.pd_max - data.pd_min, isMm)}`,
+      bg: "#ecfdf5", border: "#059669", text: "#065f46",
+      val: `Min: ${fmt(data.pd_min, isMm)}  ➔  Max: ${fmt(data.pd_max, isMm)}`,
+      sub: `螺紋配合與三針量測基準 (溝寬 = 牙厚 = P/2)`
+    };
+    cardMinor = {
+      yLine: yMinor, yCard: 218,
+      tag: "牙底 Root", title: "外牙小徑 Minor Dia (d1 / d3)",
+      badge: `UNR 圓弧牙底`,
+      bg: "#eff6ff", border: "#2563eb", text: "#1e40af",
+      val: `UN 平底基準下限: ${fmt(data.un_min, isMm)}`,
+      sub: `削平寬度 P/4 | 抗疲勞設計建議採用 UNR 圓弧牙底`
+    };
+  } else {
+    cardMajor = {
+      yLine: yMajor, yCard: 42,
+      tag: "牙底 Root (外緣)", title: "內牙大徑 Major Dia (D)",
+      badge: `牙底切削下限`,
+      bg: "#eff6ff", border: "#2563eb", text: "#1e40af",
+      val: `Min: ${fmt(data.d_min, isMm)}  (Max 無硬性上限)`,
+      sub: `削平寬度 P/8 | 絲攻外徑成形極限基準`
+    };
+    cardPitch = {
+      yLine: yPitch, yCard: 130,
+      tag: "節線 Pitch Line", title: "內牙節徑 Pitch Dia (D2)",
+      badge: `公差 Tol: ${fmt(data.pd_max - data.pd_min, isMm)}`,
+      bg: "#ecfdf5", border: "#059669", text: "#065f46",
+      val: `Min: ${fmt(data.pd_min, isMm)}  ➔  Max: ${fmt(data.pd_max, isMm)}`,
+      sub: `通止塞規 (GO/HI Plug Gage) 檢驗核心基準`
+    };
+    cardMinor = {
+      yLine: yMinor, yCard: 218,
+      tag: "牙頂 Crest (孔內徑)", title: "內牙小徑 Minor Dia (D1)",
+      badge: `公差 Tol: ${fmt(data.minor_max - data.minor_min, isMm)}`,
+      bg: "#fffbeb", border: "#d97706", text: "#92400e",
+      val: `Min: ${fmt(data.minor_min, isMm)}  ➔  Max: ${fmt(data.minor_max, isMm)}`,
+      sub: `削平寬度 P/4 | 攻牙前底孔鑽頭 (Tap Drill) 管控範圍`
+    };
+  }
+
+  function renderCard(c) {
+    const cardMidY = c.yCard + 36;
+    return `
+      <polyline points="420,${c.yLine} 448,${c.yLine} 465,${cardMidY} 480,${cardMidY}" 
+                fill="none" stroke="${c.border}" stroke-width="2"/>
+      <circle cx="420" cy="${c.yLine}" r="3.5" fill="${c.border}"/>
+      <g transform="translate(480, ${c.yCard})">
+        <rect x="0" y="0" width="480" height="74" rx="8" fill="${c.bg}" stroke="${c.border}" stroke-width="1.5"/>
+        <rect x="0" y="0" width="6" height="74" rx="3" fill="${c.border}"/>
+        <text x="16" y="21" font-size="12.5" font-weight="800" fill="${c.text}">【${c.tag}】 ${c.title}</text>
+        <rect x="330" y="7" width="140" height="20" rx="10" fill="#ffffff" stroke="${c.border}" stroke-width="1"/>
+        <text x="400" y="21" font-size="11" font-weight="700" fill="${c.text}" text-anchor="middle">${c.badge}</text>
+        <text x="16" y="45" font-size="15" font-weight="800" fill="#0f172a" font-family="Consolas, Monaco, monospace">${c.val}</text>
+        <text x="16" y="64" font-size="11" font-weight="600" fill="#475569">${c.sub}</text>
+      </g>
+    `;
+  }
+
+  const pVal = fmt(1 / spec.tpi, isMm);
+  const hBasicVal = fmt(0.54127 / spec.tpi, isMm);
+  const HVal = fmt(0.86603 / spec.tpi, isMm);
+
+  svg.innerHTML = `
+    <defs>
+      <pattern id="gridPattern" width="20" height="20" patternUnits="userSpaceOnUse">
+        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#f1f5f9" stroke-width="1"/>
+      </pattern>
+      <pattern id="hatchExt" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="10" stroke="#bae6fd" stroke-width="2.5" />
+      </pattern>
+      <pattern id="hatchInt" width="10" height="10" patternTransform="rotate(-45 0 0)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="10" stroke="#fde68a" stroke-width="2.5" />
+      </pattern>
+      <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1e293b" />
+      </marker>
+      <marker id="arrowRed" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#e11d48" />
+      </marker>
+    </defs>
+
+    <rect width="100%" height="100%" fill="#ffffff"/>
+    <rect width="450" height="365" x="10" y="10" fill="url(#gridPattern)" stroke="#e2e8f0" stroke-width="1" rx="6"/>
+
+    ${tolBandsSvg}
+
+    <path d="${basicTrianglePath}" fill="none" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4,4"/>
+
+    <path d="${profilePath}" fill="${isExt ? '#f0f9ff' : '#fffbeb'}" stroke="none"/>
+    <path d="${profilePath}" fill="url(#${hatchId})" stroke="${mainStroke}" stroke-width="2.8" stroke-linejoin="round"/>
+
+    <text x="230" y="${isExt ? 295 : 42}" font-size="12" font-weight="800" fill="${mainStroke}" text-anchor="middle" opacity="0.88">
+      ${isExt ? '▲ 外螺紋金屬實體截面 (External Bolt Shaft) ▲' : '▼ 內螺紋螺母實體截面 (Internal Nut Body) ▼'}
+    </text>
+
+    <line x1="25" y1="${yMajor}" x2="420" y2="${yMajor}" stroke="${cardMajor.border}" stroke-width="1.8" stroke-dasharray="6,3"/>
+    <line x1="25" y1="${yPitch}" x2="420" y2="${yPitch}" stroke="${cardPitch.border}" stroke-width="2" stroke-dasharray="12,4,2,4"/>
+    <line x1="25" y1="${yMinor}" x2="420" y2="${yMinor}" stroke="${cardMinor.border}" stroke-width="1.8" stroke-dasharray="6,3"/>
+
+    <line x1="25" y1="${yApexTop}" x2="128" y2="${yApexTop}" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="25" y1="${yApexBot}" x2="208" y2="${yApexBot}" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="32" y1="${yApexTop + 4}" x2="32" y2="${yApexBot - 4}" stroke="#64748b" stroke-width="1.2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <rect x="14" y="122" width="36" height="32" rx="3" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="32" y="136" font-size="10" font-weight="800" fill="#475569" text-anchor="middle">H</text>
+    <text x="32" y="149" font-size="9" font-weight="700" fill="#64748b" text-anchor="middle">0.866P</text>
+
+    <line x1="82" y1="${yMajor + 3}" x2="82" y2="${yMinor - 3}" stroke="#e11d48" stroke-width="1.5" marker-start="url(#arrowRed)" marker-end="url(#arrowRed)"/>
+    <rect x="55" y="116" width="54" height="32" rx="4" fill="#fff1f2" stroke="#fecdd3"/>
+    <text x="82" y="130" font-size="10" font-weight="800" fill="#be123c" text-anchor="middle">5/8 H</text>
+    <text x="82" y="142" font-size="9.5" font-weight="700" fill="#e11d48" text-anchor="middle">${hBasicVal}</text>
+
+    <line x1="130" y1="${yMajor - 35}" x2="130" y2="${yMajor}" stroke="#0f172a" stroke-width="1.2"/>
+    <line x1="290" y1="${yMajor - 35}" x2="290" y2="${yMajor}" stroke="#0f172a" stroke-width="1.2"/>
+    <line x1="135" y1="${yMajor - 26}" x2="285" y2="${yMajor - 26}" stroke="#0f172a" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <rect x="155" y="${yMajor - 38}" width="110" height="20" rx="4" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="210" y="${yMajor - 24}" font-size="11.5" font-weight="800" fill="#0f172a" text-anchor="middle">P = ${pVal}</text>
+
+    ${isExt ? `
+      <path d="M 270,105 A 40 40 0 0 0 310,105" fill="none" stroke="#e11d48" stroke-width="1.8"/>
+      <text x="290" y="124" font-size="12" font-weight="800" fill="#e11d48" text-anchor="middle">60°</text>
+      <text x="130" y="${yMajor - 5}" font-size="10" font-weight="800" fill="#be123c" text-anchor="middle">P/8</text>
+      <text x="210" y="${yApexBot + 15}" font-size="10" font-weight="700" fill="#1e40af" text-anchor="middle">H/4 (UN) | H/8 (UNR)</text>
+    ` : `
+      <path d="M 190,173 A 40 40 0 0 1 230,173" fill="none" stroke="#e11d48" stroke-width="1.8"/>
+      <text x="210" y="158" font-size="12" font-weight="800" fill="#e11d48" text-anchor="middle">60°</text>
+      <text x="290" y="${yMajor + 15}" font-size="10" font-weight="800" fill="#1e40af" text-anchor="middle">P/8</text>
+      <text x="210" y="${yMinor + 15}" font-size="10" font-weight="800" fill="#b45309" text-anchor="middle">P/4 (內孔牙頂)</text>
+    `}
+
+    <line x1="20" y1="345" x2="440" y2="345" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="24,6,4,6"/>
+    <text x="230" y="362" font-size="11.5" font-weight="800" fill="#dc2626" text-anchor="middle">─── 螺紋旋轉軸心線 (Thread Axis) ─── 半徑方向由下往上 ▲</text>
+
+    ${renderCard(cardMajor)}
+    ${renderCard(cardPitch)}
+    ${renderCard(cardMinor)}
+
+    <rect x="10" y="380" width="950" height="32" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="24" y="401" font-size="13" font-weight="800" fill="#1e293b">
+      【${spec.name} - Class ${cls} (${isExt ? '外螺紋 External' : '內螺紋 Internal'})】 ASME B1.1 牙型幾何截面標註圖
+    </text>
+    <text x="945" y="401" font-size="12" font-weight="700" fill="#475569" text-anchor="end">
+      原始三角高 H = ${HVal} | 基準牙深 h = ${hBasicVal}
+    </text>
+  `;
+}
+
+// =========================================================================
+// 6. 純 JavaScript 原生 PDF 封裝引擎 (零外部依賴、不靠 window.print())
+//    專為企業內網離線電腦 & iPhone 內建瀏覽器打造
+// =========================================================================
+function showToast(msg, duration = 2600) {
+  const el = document.getElementById("toastMsg");
+  el.textContent = msg;
+  el.style.display = "block";
+  if (duration > 0) {
+    setTimeout(() => { el.style.display = "none"; }, duration);
+  }
+}
+
+/**
+ * 將 JPEG Uint8Array 直接封裝為標準 PDF 1.4 單頁二進位檔 (A4 橫向 841.89 x 595.28 pt)
+ */
+function buildPdfFromJpegBytes(jpegBytes, imgW, imgH) {
+  const pageW = 841.89; // A4 Landscape Width (pt)
+  const pageH = 595.28; // A4 Landscape Height (pt)
+  const margin = 24;
+  const maxW = pageW - margin * 2;
+  const maxH = pageH - margin * 2;
+
+  const scale = Math.min(maxW / imgW, maxH / imgH);
+  const drawW = (imgW * scale).toFixed(2);
+  const drawH = (imgH * scale).toFixed(2);
+  const posX = ((pageW - imgW * scale) / 2).toFixed(2);
+  const posY = ((pageH - imgH * scale) / 2).toFixed(2);
+
+  const chunks = [];
+  let offset = 0;
+  const offsets = [];
+  const encoder = new TextEncoder();
+
+  function pushStr(str) {
+    const bytes = encoder.encode(str);
+    chunks.push(bytes);
+    offset += bytes.length;
+  }
+  function pushBytes(bytes) {
+    chunks.push(bytes);
+    offset += bytes.length;
+  }
+  function startObj(id) {
+    offsets[id] = offset;
+    pushStr(`${id} 0 obj\n`);
+  }
+  function endObj() {
+    pushStr(`\nendobj\n`);
+  }
+
+  // PDF Header (含二進位識別標記)
+  pushStr("%PDF-1.4\n%\xFF\xFF\xFF\xFF\n");
+
+  // Obj 1: Catalog
+  startObj(1);
+  pushStr("<< /Type /Catalog /Pages 2 0 R >>");
+  endObj();
+
+  // Obj 2: Pages
+  startObj(2);
+  pushStr("<< /Type /Pages /Kids [3 0 R] /Count 1 >>");
+  endObj();
+
+  // Obj 3: Page
+  startObj(3);
+  pushStr(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pageW} ${pageH}] /Resources << /XObject << /Im0 4 0 R >> >> /Contents 5 0 R >>`);
+  endObj();
+
+  // Obj 4: Image XObject (DCTDecode = Raw JPEG)
+  startObj(4);
+  pushStr(`<< /Type /XObject /Subtype /Image /Width ${imgW} /Height ${imgH} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${jpegBytes.length} >>\nstream\n`);
+  pushBytes(jpegBytes);
+  pushStr("\nendstream");
+  endObj();
+
+  // Obj 5: Page Content Stream
+  const contentStream = `q\n${drawW} 0 0 ${drawH} ${posX} ${posY} cm\n/Im0 Do\nQ\n`;
+  startObj(5);
+  pushStr(`<< /Length ${contentStream.length} >>\nstream\n${contentStream}endstream`);
+  endObj();
+
+  // XREF Table
+  const xrefOffset = offset;
+  pushStr("xref\n0 6\n0000000000 65535 f \n");
+  for (let i = 1; i <= 5; i++) {
+    const offStr = String(offsets[i]).padStart(10, '0');
+    pushStr(`${offStr} 00000 n \n`);
+  }
+
+  // Trailer
+  pushStr(`trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n${xrefOffset}\n%%EOF`);
+
+  // 合併為單一 Uint8Array
+  const totalBytes = new Uint8Array(offset);
+  let pos = 0;
+  for (const chunk of chunks) {
+    totalBytes.set(chunk, pos);
+    pos += chunk.length;
+  }
+  return totalBytes;
+}
+
+/**
+ * 繪製高解析度工程報告 Canvas 並封裝為原生 PDF 下載/分享
+ */
+async function exportNativePDF() {
+  if (!currentSpecData) return;
+  const btn = document.getElementById("btnExportPdf");
+  btn.disabled = true;
+  showToast("⏳ 正在啟動內建引擎封裝高解析 PDF...", 0);
+
+  try {
+    const isMm = document.getElementById("unitMm").checked;
+    const cls = document.getElementById("threadClass").value || (currentType === 'ext' ? '2A' : '2B');
+    const typeData = currentSpecData[currentType][cls];
+    const isExt = currentType === 'ext';
+
+    // 建立高解析度 A4 橫向比例畫布 (2000 x 1414 px)
+    const canvas = document.createElement("canvas");
+    const cw = 2000;
+    const ch = 1414;
+    canvas.width = cw;
+    canvas.height = ch;
+    const ctx = canvas.getContext("2d");
+
+    // 1. 白底與外框
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, cw, ch);
+    ctx.strokeStyle = "#1e3a8a";
+    ctx.lineWidth = 4;
+    ctx.strokeRect(36, 36, cw - 72, ch - 72);
+
+    // 2. 頂部標題橫幅
+    ctx.fillStyle = "#1e3a8a";
+    ctx.fillRect(36, 36, cw - 72, 110);
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "bold 36px -apple-system, 'Microsoft JhengHei', sans-serif";
+    ctx.fillText("ASME B1.1 英制統一螺紋標準規格檢驗報告單", 68, 92);
+    ctx.font = "600 20px -apple-system, 'Microsoft JhengHei', sans-serif";
+    ctx.fillStyle = "#bae6fd";
+    const nowStr = new Date().toISOString().slice(0, 10);
+    ctx.fillText(`規格代號: ${currentSpecData.name} - Class ${cls} (${isExt ? '外螺紋 External' : '內螺紋 Internal'})   |   單位: ${isMm ? '公制 (mm)' : '英制 (inch)'}   |   製表日期: ${nowStr}`, 68, 126);
+
+    // 3. 幾何基準四格資訊欄 (y = 170 ~ 260)
+    const pitch = currentSpecData.P;
+    const basicBoxes = [
+      { label: "公稱規格與等級 (Spec & Class)", val: `${currentSpecData.name} (${cls})` },
+      { label: "螺距 Pitch (P) / 每吋牙數 (TPI)", val: `${fmt(pitch, isMm)} (${currentSpecData.tpi} TPI)` },
+      { label: "原始三角形高度 (H = 0.8660P)", val: fmt(0.866025 * pitch, isMm) },
+      { label: "基準有效牙深 (h = 0.5413P)", val: fmt(0.54127 * pitch, isMm) }
+    ];
+    const boxW = (cw - 136 - 45) / 4;
+    basicBoxes.forEach((b, idx) => {
+      const bx = 68 + idx * (boxW + 15);
+      const by = 170;
+      ctx.fillStyle = "#f8fafc";
+      ctx.fillRect(bx, by, boxW, 86);
+      ctx.strokeStyle = "#cbd5e1";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(bx, by, boxW, 86);
+      ctx.fillStyle = "#2563eb";
+      ctx.fillRect(bx, by, 6, 86);
+
+      ctx.fillStyle = "#64748b";
+      ctx.font = "bold 17px -apple-system, 'Microsoft JhengHei', sans-serif";
+      ctx.fillText(b.label, bx + 20, by + 32);
+      ctx.fillStyle = "#0f172a";
+      ctx.font = "bold 25px Consolas, Monaco, 'Microsoft JhengHei', monospace";
+      ctx.fillText(b.val, bx + 20, by + 68);
+    });
+
+    // 4. 極限尺寸規格表 (y = 280 ~ 520)
+    const tableX = 68;
+    let tableY = 280;
+    const tableW = cw - 136;
+    const colWidths = [tableW * 0.40, tableW * 0.20, tableW * 0.20, tableW * 0.20];
+
+    // 表頭
+    ctx.fillStyle = "#e2e8f0";
+    ctx.fillRect(tableX, tableY, tableW, 48);
+    ctx.strokeStyle = "#94a3b8";
+    ctx.lineWidth = 2;
+    ctx.strokeRect(tableX, tableY, tableW, 48);
+
+    const headers = ["幾何項目 (Characteristic)", "最小值 (Min)", "最大值 (Max)", "公差範圍 (Tolerance)"];
+    ctx.fillStyle = "#1e293b";
+    ctx.font = "bold 20px -apple-system, 'Microsoft JhengHei', sans-serif";
+    let curX = tableX;
+    headers.forEach((hText, i) => {
+      ctx.fillText(hText, curX + 20, tableY + 31);
+      curX += colWidths[i];
+    });
+    tableY += 48;
+
+    let pdfRows = [];
+    if (isExt) {
+      pdfRows = [
+        { name: "外牙大徑 Major Diameter (d)", min: fmt(typeData.d_min, isMm), max: fmt(typeData.d_max, isMm), tol: fmt(typeData.d_max - typeData.d_min, isMm), bg: "#eff6ff" },
+        { name: "外牙節徑 Pitch Diameter (d2)", min: fmt(typeData.pd_min, isMm), max: fmt(typeData.pd_max, isMm), tol: fmt(typeData.pd_max - typeData.pd_min, isMm), bg: "#ecfdf5" },
+        { name: "外牙小徑 Minor Diameter (d1 Ref)", min: fmt(typeData.un_min, isMm), max: "-", tol: "-", bg: "#fffbeb" },
+        { name: "配合餘隙 Allowance (es)", min: "-", max: fmt(typeData.allowance, isMm), tol: "-", bg: "#ffffff" }
+      ];
+    } else {
+      const tap75 = fmt(currentSpecData.D - pitch * 0.9743, isMm);
+      pdfRows = [
+        { name: "內牙大徑 Major Diameter (D min)", min: fmt(typeData.d_min, isMm), max: "-", tol: "-", bg: "#eff6ff" },
+        { name: "內牙節徑 Pitch Diameter (D2)", min: fmt(typeData.pd_min, isMm), max: fmt(typeData.pd_max, isMm), tol: fmt(typeData.pd_max - typeData.pd_min, isMm), bg: "#ecfdf5" },
+        { name: "內牙小徑 Minor Diameter (D1 - 攻牙底孔)", min: fmt(typeData.minor_min, isMm), max: fmt(typeData.minor_max, isMm), tol: fmt(typeData.minor_max - typeData.minor_min, isMm), bg: "#fffbeb" },
+        { name: "建議攻牙底孔鑽頭 (75% 理論牙深鑽徑)", min: tap75, max: `極限: ${fmt(typeData.minor_min, isMm)} ~ ${fmt(typeData.minor_max, isMm)}`, tol: "Tap Drill", bg: "#f0fdf4" }
+      ];
+    }
+
+    pdfRows.forEach(r => {
+      const rowH = 46;
+      ctx.fillStyle = r.bg;
+      ctx.fillRect(tableX, tableY, tableW, rowH);
+      ctx.strokeStyle = "#cbd5e1";
+      ctx.strokeRect(tableX, tableY, tableW, rowH);
+
+      let cx = tableX;
+      const vals = [r.name, r.min, r.max, r.tol];
+      vals.forEach((v, i) => {
+        ctx.fillStyle = "#0f172a";
+        ctx.font = i === 0 ? "bold 19px -apple-system, 'Microsoft JhengHei', sans-serif" : "bold 21px Consolas, Monaco, monospace";
+        ctx.fillText(v, cx + 20, tableY + 30);
+        if (i > 0) {
+          ctx.beginPath();
+          ctx.moveTo(cx, tableY);
+          ctx.lineTo(cx, tableY + rowH);
+          ctx.stroke();
+        }
+        cx += colWidths[i];
+      });
+      tableY += rowH;
+    });
+
+    // 5. 將動態 SVG 截面幾何圖渲染至 Canvas 下半部 (y = 540 ~ 1350)
+    const svgEl = document.getElementById("threadSvg");
+    const serializer = new XMLSerializer();
+    let svgString = serializer.serializeToString(svgEl);
+    if (!svgString.includes('xmlns="http://www.w3.org/2000/svg"')) {
+      svgString = svgString.replace('<svg', '<svg xmlns="http://www.w3.org/2000/svg"');
+    }
+
+    const svgDataUrl = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svgString);
+    await new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        const targetW = cw - 136;
+        const targetH = targetW * (420 / 980);
+        ctx.drawImage(img, 68, 535, targetW, targetH);
+        ctx.strokeStyle = "#cbd5e1";
+        ctx.lineWidth = 2;
+        ctx.strokeRect(68, 535, targetW, targetH);
+        resolve();
+      };
+      img.onerror = reject;
+      img.src = svgDataUrl;
+    });
+
+    // 6. 將 Canvas 轉為 JPEG Binary 並由原生 PDF 引擎封裝
+    const jpegDataUrl = canvas.toDataURL("image/jpeg", 0.95);
+    const base64Data = jpegDataUrl.split(",")[1];
+    const binaryStr = atob(base64Data);
+    const jpegBytes = new Uint8Array(binaryStr.length);
+    for (let i = 0; i < binaryStr.length; i++) {
+      jpegBytes[i] = binaryStr.charCodeAt(i);
+    }
+
+    const pdfBytes = buildPdfFromJpegBytes(jpegBytes, cw, ch);
+    const safeSpecName = currentSpecData.name.replace(/[\/\\#*?"<>|\s]+/g, "_");
+    const fileName = `ASME_B1.1_${safeSpecName}_${cls}.pdf`;
+    const pdfBlob = new Blob([pdfBytes], { type: "application/pdf" });
+
+    // 7. 針對 iPhone / iPad 優先支援原生分享儲存面板 (解決 iPhone WebView 封鎖下載問題)
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if (isIOS && navigator.canShare && navigator.canShare({ files: [new File([pdfBlob], fileName, { type: "application/pdf" })] })) {
+      const pdfFile = new File([pdfBlob], fileName, { type: "application/pdf" });
+      await navigator.share({
+        files: [pdfFile],
+        title: fileName,
+        text: `ASME B1.1 螺紋規格表 (${currentSpecData.name} - Class ${cls})`
+      });
+      showToast("✅ 已開啟 iPhone PDF 儲存/分享選單！");
+    } else {
+      // 一般電腦瀏覽器或備援直接觸發下載
+      const blobUrl = URL.createObjectURL(pdfBlob);
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      setTimeout(() => URL.revokeObjectURL(blobUrl), 10000);
+      showToast(`✅ PDF 已直出下載：${fileName}`);
+    }
+  } catch (err) {
+    // 若使用者在 iPhone 取消分享選單不視為錯誤
+    if (err && err.name === 'AbortError') {
+      showToast("已取消分享選單");
+    } else {
+      console.error(err);
+      showToast("⚠️ 產生 PDF 時發生異常，請重試");
+    }
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+init();
+</script>
+
+
+</body></html>
